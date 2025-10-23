@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:doc.crmeb.com)",
+      "Bash(git init:*)",
+      "Bash(if [ -d .git ])",
+      "Bash(then echo \"✅ Git 已初始化\")",
+      "Bash(else echo \"❌ 需要初始化 Git\")",
+      "Bash(fi)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
