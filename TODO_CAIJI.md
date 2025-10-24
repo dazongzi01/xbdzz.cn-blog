@@ -110,17 +110,17 @@ docs/
 ### ## 1_快速入门（二级章节）
 
 #### ### 1_Hello World
-- 采集状态: [ ]
+- 采集状态: [✅]
 - 输出路径: `docs/01_快速开始/1_快速入门/01_Hello_World.md`
 - URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
 
 #### ### 2_环境准备
-- 采集状态: [ ]
+- 采集状态: [✅]
 - 输出路径: `docs/01_快速开始/1_快速入门/02_环境准备.md`
 - URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
 
 #### ### 3_第一个应用
-- 采集状态: [ ]
+- 采集状态: [✅]
 - 输出路径: `docs/01_快速开始/1_快速入门/03_第一个应用.md`
 - URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
 
@@ -129,12 +129,12 @@ docs/
 ### ## 2_核心概念（二级章节）
 
 #### ### 1_架构概述
-- 采集状态: [ ]
+- 采集状态: [✅]
 - 输出路径: `docs/01_快速开始/2_核心概念/01_架构概述.md`
 - URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
 
 #### ### 2_系统设计
-- 采集状态: [ ]
+- 采集状态: [✅]
 - 输出路径: `docs/01_快速开始/2_核心概念/02_系统设计.md`
 - URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
 
@@ -144,19 +144,19 @@ docs/
 
 ### ## 1_快速开始（二级章节）
 
-#### ### 1_基础概念
-- 采集状态: [ ]
-- 输出路径: `docs/01_快速开始/1_基础概念/01_基础概念.md`
+#### ### 1_系统简介
+- 采集状态: [✅]
+- 输出路径: `docs/01_快速开始/1_快速开始/01_系统简介.md`
 - URL: https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25961
 
 #### ### 2_环境配置
-- 采集状态: [ ]
-- 输出路径: `docs/01_快速开始/1_基础概念/02_环境配置.md`
+- 采集状态: [✅]
+- 输出路径: `docs/01_快速开始/1_快速开始/02_环境配置.md`
 - URL: https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25962
 
 #### ### 3_项目结构
 - 采集状态: [ ]
-- 输出路径: `docs/01_快速开始/1_基础概念/03_项目结构.md`
+- 输出路径: `docs/01_快速开始/1_快速开始/03_项目结构.md`
 - URL:
 
 ---

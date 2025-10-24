@@ -7,9 +7,10 @@
 - 支持三层目录结构：docs/一级/二级/文件.md
 - 更新采集状态时保留粘贴的 URL
 - 自动处理多层目录创建
+- 只采集有 URL 的任务，没有 URL 的自动跳过
 
 使用方法:
-    python3 smart_crawler_three_level.py TODO_CAIJI_THREE_LEVEL.md
+    python3 smart_crawler_three_level.py TODO_CAIJI.md
 """
 
 import os
@@ -114,7 +115,7 @@ class ThreeLevelCrawler:
 
     def update_todo_status(self, todo_file, task_section, new_status):
         """
-        更新 TODO_CAIJI_THREE_LEVEL.md 中的采集状态
+        更新 TODO_CAIJI.md 中的采集状态
         保留 URL 不删除
         """
         with open(todo_file, 'r', encoding='utf-8') as f:
@@ -149,7 +150,7 @@ class ThreeLevelCrawler:
     def crawl(self, url, output_path, task_section):
         """采集单个 URL"""
         if not url or not url.strip():
-            print(f"  ⚠️  跳过空的 URL")
+            print(f"  ⚠️  URL 为空，跳过采集")
             return False
 
         print(f"\n📝 处理 URL: {url}")
@@ -159,7 +160,7 @@ class ThreeLevelCrawler:
         if not html:
             self.log_result(url, 'N/A', output_path, 'failed')
             self.update_todo_status(
-                self.project_root / "TODO_CAIJI_THREE_LEVEL.md",
+                self.project_root / "TODO_CAIJI.md",
                 task_section,
                 '[❌]'
             )
@@ -175,7 +176,7 @@ class ThreeLevelCrawler:
             print(f"  ❌ 无法提取内容")
             self.log_result(url, title, output_path, 'failed')
             self.update_todo_status(
-                self.project_root / "TODO_CAIJI_THREE_LEVEL.md",
+                self.project_root / "TODO_CAIJI.md",
                 task_section,
                 '[❌]'
             )
@@ -197,7 +198,7 @@ class ThreeLevelCrawler:
 
             # 更新状态（保留 URL）
             self.update_todo_status(
-                self.project_root / "TODO_CAIJI_THREE_LEVEL.md",
+                self.project_root / "TODO_CAIJI.md",
                 task_section,
                 '[✅]'
             )
@@ -208,14 +209,14 @@ class ThreeLevelCrawler:
             print(f"  ❌ 保存失败: {str(e)}")
             self.log_result(url, title, output_path, 'failed')
             self.update_todo_status(
-                self.project_root / "TODO_CAIJI_THREE_LEVEL.md",
+                self.project_root / "TODO_CAIJI.md",
                 task_section,
                 '[❌]'
             )
             return False
 
     def process_todo_file(self, todo_file):
-        """处理 TODO_CAIJI_THREE_LEVEL.md 文件"""
+        """处理 TODO_CAIJI.md 文件"""
         with open(todo_file, 'r', encoding='utf-8') as f:
             lines = f.readlines()
 
@@ -257,6 +258,9 @@ class ThreeLevelCrawler:
                         success_count += 1
                     else:
                         failed_count += 1
+                elif not url_to_crawl:
+                    # 没有 URL，跳过
+                    print(f"\n⏭️  跳过 {current_section}（无 URL）")
 
             i += 1
 
@@ -300,8 +304,8 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description='三层目录采集爬虫')
-    parser.add_argument('todo_file', nargs='?', default='TODO_CAIJI_THREE_LEVEL.md',
-                       help='TODO_CAIJI_THREE_LEVEL.md 文件路径')
+    parser.add_argument('todo_file', nargs='?', default='TODO_CAIJI.md',
+                       help='TODO_CAIJI.md 文件路径')
     parser.add_argument('--report', action='store_true', help='生成采集报告')
 
     args = parser.parse_args()

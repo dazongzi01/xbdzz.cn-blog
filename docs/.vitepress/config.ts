@@ -6,6 +6,10 @@ export default defineConfig({
 
   ignoreDeadLinks: true,
 
+  srcExclude: [
+    '06_API文档/04_用户接口.md',
+  ],
+
   head: [
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
     ['link', { rel: 'icon', href: '/logo.svg' }]
@@ -17,11 +21,6 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '快速开始', link: '/01_快速开始/' },
-      { text: '系统配置', link: '/02_系统配置/' },
-      { text: '商城功能', link: '/03_商城功能/' },
-      { text: '商户管理', link: '/04_商户管理/' },
-      { text: '交易订单', link: '/05_交易订单/' },
-      { text: 'API文档', link: '/06_API文档/' }
     ],
 
     sidebar: {
@@ -29,50 +28,31 @@ export default defineConfig({
         {
           text: '快速开始',
           items: [
-            { text: '模块概览', link: '/01_快速开始/' }
+            {
+              text: '快速入门',
+              items: [
+                { text: 'Hello_World', link: '/01_快速开始/1_快速入门/01_Hello_World' },
+                { text: '环境准备', link: '/01_快速开始/1_快速入门/02_环境准备' },
+                { text: '第一个应用', link: '/01_快速开始/1_快速入门/03_第一个应用' },
+              ]
+            },
+            {
+              text: '快速开始',
+              items: [
+                { text: '系统简介', link: '/01_快速开始/1_快速开始/01_系统简介' },
+                { text: '环境配置', link: '/01_快速开始/1_快速开始/02_环境配置' },
+              ]
+            },
+            {
+              text: '核心概念',
+              items: [
+                { text: '架构概述', link: '/01_快速开始/2_核心概念/01_架构概述' },
+                { text: '系统设计', link: '/01_快速开始/2_核心概念/02_系统设计' },
+              ]
+            },
           ]
         }
       ],
-      '/02_系统配置/': [
-        {
-          text: '系统配置',
-          items: [
-            { text: '模块概览', link: '/02_系统配置/' }
-          ]
-        }
-      ],
-      '/03_商城功能/': [
-        {
-          text: '商城功能',
-          items: [
-            { text: '模块概览', link: '/03_商城功能/' }
-          ]
-        }
-      ],
-      '/04_商户管理/': [
-        {
-          text: '商户管理',
-          items: [
-            { text: '模块概览', link: '/04_商户管理/' }
-          ]
-        }
-      ],
-      '/05_交易订单/': [
-        {
-          text: '交易订单',
-          items: [
-            { text: '模块概览', link: '/05_交易订单/' }
-          ]
-        }
-      ],
-      '/06_API文档/': [
-        {
-          text: 'API文档',
-          items: [
-            { text: '模块概览', link: '/06_API文档/' }
-          ]
-        }
-      ]
     },
 
     socialLinks: [

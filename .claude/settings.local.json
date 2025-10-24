@@ -30,7 +30,15 @@
       "Bash(TODO_CAIJI.md )",
       "Bash(QUICKSTART_GUIDE.md )",
       "Bash(content-platform-editor-analysis.md )",
-      "Bash(QUICK_START.md)"
+      "Bash(QUICK_START.md)",
+      "Bash(git reset:*)",
+      "Bash(git restore:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git rm:*)",
+      "Bash(chmod:*)",
+      "Bash(python3:*)",
+      "Bash(kill:*)"
     ],
     "deny": [],
     "ask": []
