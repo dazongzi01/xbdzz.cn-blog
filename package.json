@@ -1,0 +1,17 @@
+{
+  "name": "crmeb-java-docs",
+  "version": "1.0.0",
+  "description": "CRMEB Java 多商户商城系统文档",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.28"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0"
+  }
+}

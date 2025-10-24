@@ -1,0 +1,1003 @@
+{
+  "analysis_date": "2025-10-23",
+  "description": "各大内容平台编辑器支持情况分析报告",
+  "platforms": {
+    "wechat_mp": {
+      "platform_name": "微信公众号",
+      "editor_type": "富文本编辑器（不支持直接HTML编辑，需通过粘贴方式）",
+      "editing_modes": [
+        "富文本可视化编辑",
+        "粘贴外部HTML内容"
+      ],
+      "supported_html_tags": {
+        "basic_text": [
+          "p",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "span",
+          "strong",
+          "b",
+          "em",
+          "i",
+          "u",
+          "del",
+          "br"
+        ],
+        "structure": [
+          "div",
+          "section"
+        ],
+        "list": [
+          "ul",
+          "ol",
+          "li"
+        ],
+        "media": [
+          "img",
+          "a"
+        ],
+        "table": [
+          "table",
+          "thead",
+          "tbody",
+          "tr",
+          "th",
+          "td"
+        ],
+        "quote": [
+          "blockquote"
+        ],
+        "code": [
+          "code",
+          "pre"
+        ],
+        "svg": [
+          "svg",
+          "g",
+          "rect",
+          "circle",
+          "ellipse",
+          "line",
+          "polyline",
+          "polygon",
+          "path",
+          "text",
+          "tspan"
+        ],
+        "wechat_specific": [
+          "mpvoice",
+          "mpvideo"
+        ]
+      },
+      "supported_css_properties": {
+        "text": [
+          "color",
+          "font-size",
+          "font-family",
+          "font-weight",
+          "font-style",
+          "text-align",
+          "text-decoration",
+          "line-height",
+          "letter-spacing"
+        ],
+        "layout": [
+          "margin",
+          "margin-top",
+          "margin-right",
+          "margin-bottom",
+          "margin-left",
+          "padding",
+          "padding-top",
+          "padding-right",
+          "padding-bottom",
+          "padding-left",
+          "width",
+          "height",
+          "max-width",
+          "min-width"
+        ],
+        "background": [
+          "background",
+          "background-color",
+          "background-image"
+        ],
+        "border": [
+          "border",
+          "border-width",
+          "border-style",
+          "border-color",
+          "border-radius"
+        ],
+        "display": [
+          "display",
+          "vertical-align"
+        ]
+      },
+      "unsupported_elements": [
+        "script",
+        "iframe",
+        "style标签（外部样式）",
+        "link",
+        "form",
+        "input",
+        "button",
+        "video",
+        "audio"
+      ],
+      "unsupported_css_properties": [
+        "position（会被过滤）",
+        "float（部分情况失效）",
+        "z-index"
+      ],
+      "style_requirements": {
+        "inline_only": true,
+        "external_styles": false,
+        "description": "必须使用内联样式（style属性），不支持<style>标签和外部CSS文件"
+      },
+      "paste_conversion_rules": [
+        "自动过滤不安全的标签（script、iframe等）",
+        "保留允许的HTML标签结构",
+        "保留内联样式",
+        "移除外部样式表引用",
+        "移除JavaScript相关属性",
+        "图片自动上传到微信CDN",
+        "链接自动添加rel=\"nofollow\"属性"
+      ],
+      "limitations": [
+        "不支持JavaScript代码",
+        "不支持外部CSS文件",
+        "position定位属性失效",
+        "图片需要上传到微信服务器",
+        "视频需要使用mpvideo标签",
+        "音频需要使用mpvoice标签",
+        "有字数限制（通常不超过20000字）"
+      ],
+      "best_practices": [
+        "使用第三方Markdown编辑器（如Md2All）生成HTML后粘贴",
+        "所有样式必须写成内联样式",
+        "使用section标签作为容器进行分段",
+        "代码块使用pre+code标签组合",
+        "图片提前上传到微信素材库",
+        "避免使用复杂的CSS布局",
+        "测试时在多个微信客户端预览",
+        "使用Web Inspector查看最终渲染的HTML结构"
+      ],
+      "recommended_tools": [
+        "Md2All - Markdown排版工具",
+        "壹伴 - 公众号助手",
+        "135编辑器 - 富文本编辑器",
+        "秀米 - 图文排版工具"
+      ]
+    },
+    "juejin": {
+      "platform_name": "掘金",
+      "editor_type": "Markdown编辑器（基于ByteMD）",
+      "editing_modes": [
+        "Markdown源码编辑",
+        "实时预览",
+        "粘贴富文本自动转换"
+      ],
+      "core_technology": "ByteMD (Svelte构建，开源)",
+      "supported_formats": {
+        "primary": "Markdown (GitHub Flavored Markdown)",
+        "html_support": "有限支持（通过Markdown内嵌HTML）",
+        "rich_text": "支持粘贴后自动转换为Markdown"
+      },
+      "supported_markdown_syntax": [
+        "标题（# - ######）",
+        "粗体（**text** 或 __text__）",
+        "斜体（*text* 或 _text_）",
+        "删除线（~~text~~）",
+        "代码块（```language）",
+        "行内代码（`code`）",
+        "链接（[text](url)）",
+        "图片（![alt](url)）",
+        "无序列表（- 或 *）",
+        "有序列表（1. 2. 3.）",
+        "引用（> text）",
+        "分割线（--- 或 ***）",
+        "表格",
+        "任务列表（- [ ] task）",
+        "数学公式（通过插件）",
+        "流程图（通过插件）",
+        "时序图（通过插件）"
+      ],
+      "supported_html_tags_in_markdown": [
+        "a",
+        "img",
+        "br",
+        "p",
+        "div",
+        "span",
+        "h1-h6",
+        "strong",
+        "em",
+        "code",
+        "pre",
+        "blockquote",
+        "ul",
+        "ol",
+        "li",
+        "table",
+        "thead",
+        "tbody",
+        "tr",
+        "th",
+        "td",
+        "hr"
+      ],
+      "unsupported_elements": [
+        "script",
+        "iframe",
+        "style（外部样式）",
+        "form",
+        "input",
+        "button",
+        "embed",
+        "object"
+      ],
+      "paste_conversion_rules": [
+        "富文本自动转换为Markdown语法",
+        "保留基本格式（标题、粗体、斜体等）",
+        "代码块自动识别并添加语法高亮",
+        "图片自动上传到掘金CDN",
+        "链接保留",
+        "表格结构转换为Markdown表格",
+        "过滤不安全的HTML标签"
+      ],
+      "plugin_system": {
+        "enabled": true,
+        "built_in_plugins": [
+          "gfm（GitHub Flavored Markdown）",
+          "highlight（代码高亮）",
+          "gemoji（emoji支持）",
+          "math（数学公式）",
+          "mermaid（流程图）"
+        ],
+        "custom_plugins": "支持自定义插件扩展"
+      },
+      "features": [
+        "所见即所得的实时预览",
+        "代码语法高亮（支持80+语言）",
+        "代码块一键复制",
+        "图片拖拽上传",
+        "图片粘贴自动上传",
+        "Markdown快捷键",
+        "自动保存草稿",
+        "Emoji支持",
+        "数学公式支持（KaTeX）",
+        "流程图支持（Mermaid）",
+        "目录自动生成"
+      ],
+      "limitations": [
+        "不支持JavaScript执行",
+        "HTML标签支持有限（基于XSS安全考虑）",
+        "内联样式可能被过滤",
+        "不支持自定义CSS类",
+        "图片大小有限制",
+        "文章字数建议不超过50000字"
+      ],
+      "best_practices": [
+        "使用标准的GitHub Flavored Markdown语法",
+        "代码块指定语言类型以获得语法高亮",
+        "图片使用拖拽或粘贴方式上传",
+        "使用相对简单的HTML结构",
+        "避免复杂的内联样式",
+        "利用插件系统实现高级功能",
+        "定期保存草稿",
+        "发布前使用预览功能检查效果"
+      ],
+      "recommended_format": "Markdown (GFM)",
+      "github_repo": "https://github.com/bytedance/bytemd"
+    },
+    "csdn": {
+      "platform_name": "CSDN",
+      "editor_type": "多模式编辑器",
+      "editing_modes": [
+        "Markdown编辑器（默认）",
+        "富文本编辑器",
+        "代码编辑器"
+      ],
+      "supported_formats": {
+        "primary": "Markdown",
+        "secondary": "富文本HTML",
+        "import": "支持导入Markdown文件"
+      },
+      "supported_html_tags": {
+        "basic": [
+          "p",
+          "div",
+          "span",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "strong",
+          "b",
+          "em",
+          "i",
+          "u",
+          "del",
+          "br",
+          "hr"
+        ],
+        "list": [
+          "ul",
+          "ol",
+          "li"
+        ],
+        "media": [
+          "img",
+          "a"
+        ],
+        "table": [
+          "table",
+          "thead",
+          "tbody",
+          "tr",
+          "th",
+          "td"
+        ],
+        "code": [
+          "code",
+          "pre"
+        ],
+        "quote": [
+          "blockquote",
+          "cite"
+        ],
+        "other": [
+          "small",
+          "sub",
+          "sup",
+          "mark"
+        ]
+      },
+      "supported_css_properties": [
+        "color",
+        "background-color",
+        "font-size",
+        "font-family",
+        "font-weight",
+        "text-align",
+        "text-decoration",
+        "line-height",
+        "margin",
+        "padding",
+        "border",
+        "border-radius",
+        "width",
+        "height"
+      ],
+      "unsupported_elements": [
+        "script",
+        "iframe",
+        "style（外部）",
+        "link",
+        "form",
+        "input",
+        "button",
+        "video（需使用特定标签）",
+        "audio",
+        "embed",
+        "object"
+      ],
+      "xss_protection": {
+        "enabled": true,
+        "method": "白名单过滤",
+        "description": "使用XSS过滤库对用户输入进行安全过滤，只允许白名单内的标签和属性"
+      },
+      "paste_conversion_rules": [
+        "Markdown模式下粘贴富文本自动转换为Markdown",
+        "富文本模式下保留HTML结构",
+        "自动过滤危险标签和属性",
+        "代码块自动识别并高亮",
+        "图片自动上传到CSDN图床",
+        "外部链接添加nofollow属性",
+        "表格结构保留"
+      ],
+      "features": [
+        "Markdown实时预览",
+        "代码语法高亮（支持100+语言）",
+        "代码行号显示",
+        "一键复制代码",
+        "图片拖拽上传",
+        "文章目录自动生成",
+        "Emoji表情支持",
+        "数学公式支持（MathJax）",
+        "导入/导出Markdown文件",
+        "文章模板功能",
+        "自动保存草稿"
+      ],
+      "limitations": [
+        "不支持JavaScript代码执行",
+        "CSS样式有白名单限制",
+        "图片大小限制（通常5MB以内）",
+        "视频需要使用CSDN视频服务",
+        "外部iframe受限",
+        "文章长度建议不超过100000字"
+      ],
+      "best_practices": [
+        "推荐使用Markdown编辑器模式",
+        "代码块使用三个反引号并指定语言",
+        "图片使用图床或直接上传",
+        "避免使用复杂的HTML嵌套",
+        "表格使用Markdown语法更简洁",
+        "数学公式使用LaTeX语法",
+        "定期保存草稿避免丢失",
+        "发布前预览检查格式",
+        "使用文章标签提高可见度"
+      ],
+      "recommended_format": "Markdown",
+      "editor_library": "可能基于UEditor或自研编辑器"
+    },
+    "zhihu": {
+      "platform_name": "知乎",
+      "editor_type": "富文本编辑器（可能基于Slate.js）",
+      "editing_modes": [
+        "富文本所见即所得编辑",
+        "粘贴Markdown自动转换",
+        "粘贴HTML内容"
+      ],
+      "supported_formats": {
+        "primary": "富文本（WYSIWYG）",
+        "markdown_paste": "支持粘贴Markdown并自动转换",
+        "html_paste": "支持粘贴HTML并转换"
+      },
+      "supported_html_tags": {
+        "text": [
+          "p",
+          "span",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "strong",
+          "b",
+          "em",
+          "i",
+          "u",
+          "del",
+          "br"
+        ],
+        "structure": [
+          "div"
+        ],
+        "list": [
+          "ul",
+          "ol",
+          "li"
+        ],
+        "media": [
+          "img",
+          "a",
+          "figure"
+        ],
+        "code": [
+          "code",
+          "pre"
+        ],
+        "quote": [
+          "blockquote"
+        ],
+        "other": [
+          "hr",
+          "sup",
+          "sub"
+        ]
+      },
+      "supported_inline_formats": [
+        "加粗（Bold）",
+        "斜体（Italic）",
+        "下划线（Underline）",
+        "删除线（Strikethrough）",
+        "行内代码",
+        "上标",
+        "下标",
+        "链接",
+        "颜色高亮"
+      ],
+      "supported_block_formats": [
+        "标题（H1-H6）",
+        "段落",
+        "引用块",
+        "代码块",
+        "无序列表",
+        "有序列表",
+        "分割线",
+        "图片",
+        "视频",
+        "公式（LaTeX）"
+      ],
+      "unsupported_elements": [
+        "script",
+        "iframe（受限）",
+        "style",
+        "link",
+        "form",
+        "input",
+        "button",
+        "table（有限支持）",
+        "embed",
+        "object"
+      ],
+      "paste_conversion_rules": [
+        "Markdown格式粘贴时自动识别并转换为富文本",
+        "HTML粘贴时保留基本格式",
+        "自动过滤不安全标签",
+        "代码块自动识别并添加语法高亮",
+        "图片自动上传到知乎图床",
+        "链接保留并添加安全属性",
+        "复杂样式简化为知乎支持的格式",
+        "表格可能转换为纯文本或简单格式"
+      ],
+      "features": [
+        "所见即所得编辑体验",
+        "实时保存",
+        "代码语法高亮",
+        "数学公式支持（KaTeX）",
+        "图片拖拽上传",
+        "图片粘贴自动上传",
+        "视频插入",
+        "卡片式链接",
+        "@提及用户",
+        "#话题标签",
+        "插入投票",
+        "插入商品卡片"
+      ],
+      "editor_technology": {
+        "framework": "可能基于Slate.js",
+        "description": "Slate.js是一个完全可定制的富文本编辑器框架，提供强大的API和插件系统"
+      },
+      "limitations": [
+        "不支持JavaScript执行",
+        "不支持自定义CSS",
+        "表格功能有限（可能不支持复杂表格）",
+        "iframe嵌入受限（仅支持特定平台）",
+        "视频仅支持知乎视频或特定外部源",
+        "图片大小有限制",
+        "文章长度建议合理（过长影响阅读体验）"
+      ],
+      "best_practices": [
+        "直接在知乎编辑器中创作以获得最佳体验",
+        "Markdown内容需要转换后再粘贴",
+        "使用知乎的格式工具栏进行格式化",
+        "图片直接粘贴或拖拽上传",
+        "代码块使用编辑器的代码功能",
+        "数学公式使用LaTeX语法",
+        "避免从Word等软件直接粘贴（格式可能混乱）",
+        "长文建议分段使用标题",
+        "发布前使用预览功能检查",
+        "利用知乎的卡片功能插入链接"
+      ],
+      "recommended_format": "富文本（直接编辑）或 Markdown转换后粘贴",
+      "markdown_note": "知乎不直接支持Markdown编辑，但可以粘贴Markdown内容自动转换"
+    }
+  },
+  "cross_platform_comparison": {
+    "editor_types": {
+      "wechat_mp": "富文本（粘贴式）",
+      "juejin": "Markdown（ByteMD）",
+      "csdn": "Markdown + 富文本（混合）",
+      "zhihu": "富文本（Slate.js）"
+    },
+    "markdown_support": {
+      "wechat_mp": "不支持（需转换）",
+      "juejin": "原生支持（推荐）",
+      "csdn": "原生支持（推荐）",
+      "zhihu": "粘贴转换"
+    },
+    "html_paste_support": {
+      "wechat_mp": "支持（有严格过滤）",
+      "juejin": "有限支持（转Markdown）",
+      "csdn": "支持（有过滤）",
+      "zhihu": "支持（转富文本）"
+    },
+    "inline_style_support": {
+      "wechat_mp": "必须使用",
+      "juejin": "不推荐",
+      "csdn": "有限支持",
+      "zhihu": "不支持自定义"
+    },
+    "code_highlight": {
+      "wechat_mp": "需第三方工具",
+      "juejin": "内置支持",
+      "csdn": "内置支持",
+      "zhihu": "内置支持"
+    },
+    "image_upload": {
+      "wechat_mp": "自动上传到微信CDN",
+      "juejin": "自动上传到掘金CDN",
+      "csdn": "自动上传到CSDN图床",
+      "zhihu": "自动上传到知乎图床"
+    },
+    "math_formula": {
+      "wechat_mp": "需第三方工具",
+      "juejin": "插件支持（KaTeX）",
+      "csdn": "支持（MathJax）",
+      "zhihu": "支持（KaTeX）"
+    }
+  },
+  "common_html_whitelist": {
+    "description": "基于XSS防护的通用HTML白名单标签",
+    "text_tags": [
+      "p",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "span",
+      "strong",
+      "b",
+      "em",
+      "i",
+      "u",
+      "del",
+      "strike",
+      "br",
+      "hr"
+    ],
+    "structure_tags": [
+      "div",
+      "section",
+      "article",
+      "header",
+      "footer"
+    ],
+    "list_tags": [
+      "ul",
+      "ol",
+      "li",
+      "dl",
+      "dt",
+      "dd"
+    ],
+    "media_tags": [
+      "img",
+      "a",
+      "figure",
+      "figcaption"
+    ],
+    "table_tags": [
+      "table",
+      "thead",
+      "tbody",
+      "tfoot",
+      "tr",
+      "th",
+      "td",
+      "caption"
+    ],
+    "code_tags": [
+      "code",
+      "pre",
+      "kbd",
+      "samp",
+      "var"
+    ],
+    "quote_tags": [
+      "blockquote",
+      "q",
+      "cite"
+    ],
+    "other_tags": [
+      "small",
+      "sub",
+      "sup",
+      "mark",
+      "abbr",
+      "time"
+    ]
+  },
+  "common_css_whitelist": {
+    "description": "富文本编辑器通常允许的CSS属性",
+    "text_properties": [
+      "color",
+      "font-size",
+      "font-family",
+      "font-weight",
+      "font-style",
+      "text-align",
+      "text-decoration",
+      "text-indent",
+      "line-height",
+      "letter-spacing",
+      "word-spacing"
+    ],
+    "layout_properties": [
+      "margin",
+      "margin-top",
+      "margin-right",
+      "margin-bottom",
+      "margin-left",
+      "padding",
+      "padding-top",
+      "padding-right",
+      "padding-bottom",
+      "padding-left",
+      "width",
+      "height",
+      "max-width",
+      "max-height",
+      "min-width",
+      "min-height"
+    ],
+    "background_properties": [
+      "background",
+      "background-color",
+      "background-image",
+      "background-size",
+      "background-position",
+      "background-repeat"
+    ],
+    "border_properties": [
+      "border",
+      "border-width",
+      "border-style",
+      "border-color",
+      "border-radius",
+      "border-top",
+      "border-right",
+      "border-bottom",
+      "border-left"
+    ],
+    "display_properties": [
+      "display",
+      "vertical-align",
+      "text-align"
+    ]
+  },
+  "universal_restrictions": {
+    "forbidden_tags": [
+      "script",
+      "iframe",
+      "style",
+      "link",
+      "form",
+      "input",
+      "textarea",
+      "button",
+      "select",
+      "embed",
+      "object",
+      "applet",
+      "meta",
+      "base"
+    ],
+    "forbidden_attributes": [
+      "onclick",
+      "onload",
+      "onerror",
+      "onmouseover",
+      "onmouseout",
+      "onfocus",
+      "onblur",
+      "onchange",
+      "onsubmit",
+      "javascript:",
+      "vbscript:",
+      "data:"
+    ],
+    "forbidden_css_properties": [
+      "position: fixed",
+      "position: sticky",
+      "javascript:",
+      "expression()",
+      "behavior",
+      "-moz-binding"
+    ],
+    "security_measures": [
+      "XSS过滤（白名单机制）",
+      "CSRF防护",
+      "内容安全策略（CSP）",
+      "图片防盗链",
+      "链接自动添加rel=\"nofollow noopener\"",
+      "iframe沙箱模式"
+    ]
+  },
+  "general_best_practices": {
+    "content_creation": [
+      "根据平台特性选择合适的编辑器类型",
+      "Markdown平台（掘金、CSDN）使用Markdown编辑",
+      "富文本平台（微信、知乎）使用可视化编辑或转换工具",
+      "使用语义化HTML标签",
+      "保持内容结构简洁清晰"
+    ],
+    "style_formatting": [
+      "避免过度使用内联样式",
+      "使用平台提供的格式化工具",
+      "颜色使用适度，保持可读性",
+      "字体大小合理，避免过大过小",
+      "行距、段距设置适当"
+    ],
+    "code_blocks": [
+      "指定代码语言以获得正确的语法高亮",
+      "保持代码缩进一致",
+      "复杂代码添加注释",
+      "使用单行代码和多行代码块区分"
+    ],
+    "images": [
+      "图片大小适中（建议不超过5MB）",
+      "使用平台图床确保稳定性",
+      "添加有意义的alt文本",
+      "注意版权问题",
+      "截图保持清晰度"
+    ],
+    "cross_platform_publishing": [
+      "使用Markdown作为源格式（易于迁移）",
+      "使用Md2All等工具进行平台适配",
+      "图片使用稳定的外部图床（如七牛、阿里云OSS）",
+      "避免平台特定的功能（如微信的mpvoice）",
+      "保留Markdown源文件便于修改和复用"
+    ],
+    "security": [
+      "不在文章中嵌入恶意代码",
+      "谨慎使用外部链接",
+      "避免泄露敏感信息",
+      "遵守平台内容规范"
+    ]
+  },
+  "recommended_tools": {
+    "markdown_editors": [
+      {
+        "name": "Typora",
+        "description": "优秀的本地Markdown编辑器，所见即所得",
+        "platforms": ["Windows", "macOS", "Linux"]
+      },
+      {
+        "name": "VSCode + Markdown插件",
+        "description": "强大的代码编辑器，支持丰富的Markdown插件",
+        "platforms": ["Windows", "macOS", "Linux"]
+      },
+      {
+        "name": "Obsidian",
+        "description": "知识管理工具，优秀的Markdown支持",
+        "platforms": ["Windows", "macOS", "Linux", "iOS", "Android"]
+      }
+    ],
+    "cross_platform_tools": [
+      {
+        "name": "Md2All",
+        "description": "Markdown排版工具，支持一键复制到多个平台",
+        "url": "http://md.aclickall.com/",
+        "features": ["微信公众号", "知乎", "掘金", "CSDN"]
+      },
+      {
+        "name": "MDX Editor",
+        "description": "跨平台Markdown编辑器，支持一键发布",
+        "features": ["实时预览", "代码高亮", "公众号排版"]
+      },
+      {
+        "name": "墨滴",
+        "description": "Markdown编辑器，支持多平台发布",
+        "features": ["微信公众号", "知乎", "掘金", "CSDN", "简书"]
+      }
+    ],
+    "image_hosting": [
+      {
+        "name": "七牛云",
+        "description": "稳定的对象存储服务",
+        "features": ["CDN加速", "图片处理", "免费额度"]
+      },
+      {
+        "name": "阿里云OSS",
+        "description": "企业级对象存储",
+        "features": ["高可用", "图片处理", "CDN"]
+      },
+      {
+        "name": "GitHub + jsDelivr",
+        "description": "免费方案，适合开发者",
+        "features": ["完全免费", "CDN加速", "版本控制"]
+      },
+      {
+        "name": "SM.MS",
+        "description": "免费图床服务",
+        "features": ["无需注册", "API支持", "免费"]
+      }
+    ],
+    "code_highlight_tools": [
+      {
+        "name": "Carbon",
+        "description": "代码美化工具，生成精美的代码截图",
+        "url": "https://carbon.now.sh/"
+      },
+      {
+        "name": "CodeZen",
+        "description": "代码高亮转换工具",
+        "features": ["多主题", "多语言", "复制HTML"]
+      }
+    ]
+  },
+  "technical_implementation_notes": {
+    "xss_protection": {
+      "description": "所有平台都实施XSS防护",
+      "common_libraries": [
+        "js-xss（JavaScript）",
+        "DOMPurify（JavaScript）",
+        "Jsoup（Java）",
+        "Bleach（Python）",
+        "XssHtml（PHP）"
+      ],
+      "filtering_strategy": "白名单机制 + 属性过滤 + 内容转义"
+    },
+    "markdown_rendering": {
+      "common_libraries": [
+        "marked.js",
+        "markdown-it",
+        "remark",
+        "showdown",
+        "commonmark.js"
+      ],
+      "syntax_standard": "GitHub Flavored Markdown (GFM)"
+    },
+    "rich_text_editors": {
+      "popular_frameworks": [
+        "Slate.js（知乎可能使用）",
+        "ProseMirror",
+        "Quill.js",
+        "TinyMCE",
+        "CKEditor",
+        "UEditor（CSDN可能使用）",
+        "wangEditor",
+        "ByteMD（掘金使用）"
+      ]
+    },
+    "content_sanitization_flow": [
+      "1. 用户输入HTML/Markdown内容",
+      "2. 前端初步验证和转换",
+      "3. 后端接收并进行白名单过滤",
+      "4. 移除危险标签和属性",
+      "5. 转义特殊字符",
+      "6. 存储到数据库",
+      "7. 输出时再次进行安全检查",
+      "8. 添加CSP头部限制"
+    ]
+  },
+  "summary": {
+    "key_findings": [
+      "微信公众号：严格的HTML白名单，必须使用内联样式，不支持JavaScript",
+      "掘金：原生Markdown支持（ByteMD），HTML通过Markdown嵌入，注重代码展示",
+      "CSDN：Markdown和富文本双模式，灵活性高，代码友好",
+      "知乎：富文本编辑器（可能基于Slate.js），支持Markdown粘贴转换，所见即所得",
+      "所有平台都实施严格的XSS防护，使用白名单机制过滤内容",
+      "代码展示是技术平台的核心功能，都提供语法高亮支持",
+      "图片都会自动上传到各平台的CDN，确保稳定性和速度"
+    ],
+    "platform_selection_guide": {
+      "for_technical_content": "掘金或CSDN（原生Markdown，代码友好）",
+      "for_general_audience": "微信公众号（排版精美，传播力强）",
+      "for_knowledge_sharing": "知乎（社区活跃，互动性强）",
+      "for_professional_blog": "CSDN（SEO好，技术社区）"
+    },
+    "universal_recommendations": [
+      "使用Markdown作为内容源格式，便于跨平台发布",
+      "图片使用稳定的图床服务，避免平台迁移时图片丢失",
+      "代码块指定语言类型，确保正确的语法高亮",
+      "避免使用平台特定的功能，保持内容的可移植性",
+      "定期备份内容，防止数据丢失",
+      "遵守各平台的内容规范和版权政策"
+    ]
+  },
+  "references": [
+    "微信公众平台官方文档",
+    "掘金ByteMD GitHub仓库",
+    "CSDN编辑器帮助文档",
+    "知乎创作者中心",
+    "js-xss安全过滤库",
+    "GitHub Flavored Markdown规范",
+    "OWASP XSS防护指南"
+  ],
+  "version": "1.0.0",
+  "last_updated": "2025-10-23"
+}
