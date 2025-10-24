@@ -90,11 +90,11 @@ docs/
 ## 📌 使用说明
 
 1. 在对应模块下填写采集链接
-2. 执行 `python3 smart_crawler.py` 会：
+2. 执行 `python3 smart_crawler_three_level.py` 会：
    - 读取本文件中的待采集任务
-   - 按照模块-章节层级自动采集
+   - 按照三层目录层级自动采集
    - 转换为 Markdown 格式
-   - 保存到 `docs/` 对应目录
+   - 保存到 `docs/` 对应三层目录
    - 自动更新任务状态
 
 3. 支持的状态标记：
@@ -102,6 +102,41 @@ docs/
    - `[x]` - 已采集
    - `[✅]` - 采集完成
    - `[❌]` - 采集失败
+
+---
+
+## 🎯 DEMO 配置（复制此配置作为模板）
+
+### ## 1_快速入门（二级章节）
+
+#### ### 1_Hello World
+- 采集状态: [ ]
+- 输出路径: `docs/01_快速开始/1_快速入门/01_Hello_World.md`
+- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
+
+#### ### 2_环境准备
+- 采集状态: [ ]
+- 输出路径: `docs/01_快速开始/1_快速入门/02_环境准备.md`
+- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
+
+#### ### 3_第一个应用
+- 采集状态: [ ]
+- 输出路径: `docs/01_快速开始/1_快速入门/03_第一个应用.md`
+- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
+
+---
+
+### ## 2_核心概念（二级章节）
+
+#### ### 1_架构概述
+- 采集状态: [ ]
+- 输出路径: `docs/01_快速开始/2_核心概念/01_架构概述.md`
+- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
+
+#### ### 2_系统设计
+- 采集状态: [ ]
+- 输出路径: `docs/01_快速开始/2_核心概念/02_系统设计.md`
+- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
 
 ---
 
