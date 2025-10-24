@@ -4,80 +4,61 @@
 
 ---
 
-## 📖 示例：三层目录结构
+## 📖 示例：目录层级结构
 
-这是一个完整的采集任务示例，展示了如何填写和如何输出到 docs 目录（三层结构）：
+这是一个完整的采集任务示例，展示了如何填写和如何输出到 docs 目录：
 
 ```
-采集任务映射示例（三层目录）：
+采集任务映射示例：
 ┌─ 模块 1: Java 开发文档
-│  ├─ ## 1_快速开始（二级）
-│  │  ├─ ### 1_基础概念
-│  │  │  ├─ URL: https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25961
-│  │  │  └─ 输出路径: docs/01_快速开始/1_基础概念/01_快速开始.md
-│  │  │
-│  │  ├─ ### 2_安装部署
-│  │  │  ├─ URL: https://doc.crmeb.com/.../xxx
-│  │  │  └─ 输出路径: docs/01_快速开始/2_安装部署/01_环境要求.md
-│  │  │
-│  │  └─ ### 3_项目结构
-│  │     ├─ URL: https://doc.crmeb.com/.../yyy
-│  │     └─ 输出路径: docs/01_快速开始/3_项目结构/01_目录说明.md
+│  ├─ ### 1_快速开始
+│  │  ├─ URL: https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25961
+│  │  └─ 输出路径: docs/01_快速开始/01_java快速开始.md
 │  │
-│  └─ ## 2_系统配置（二级）
-│     ├─ ### 1_数据库配置
-│     │  ├─ URL: https://doc.crmeb.com/.../aaa
-│     │  └─ 输出路径: docs/01_快速开始/4_系统配置/01_数据库配置.md
-│     │
-│     └─ ### 2_缓存配置
-│        ├─ URL: https://doc.crmeb.com/.../bbb
-│        └─ 输出路径: docs/01_快速开始/4_系统配置/02_缓存配置.md
+│  ├─ ### 2_环境配置
+│  │  ├─ URL: https://doc.crmeb.com/.../xxx
+│  │  └─ 输出路径: docs/01_快速开始/02_环境配置.md
+│  │
+│  └─ ### 3_项目结构
+│     ├─ URL: https://doc.crmeb.com/.../yyy
+│     └─ 输出路径: docs/01_快速开始/03_项目结构.md
+│
+├─ 模块 2: 系统配置
+│  ├─ ### 1_数据库配置
+│  │  ├─ URL: https://doc.crmeb.com/.../aaa
+│  │  └─ 输出路径: docs/02_系统配置/01_数据库配置.md
+│  │
+│  ├─ ### 2_缓存配置
+│  │  ├─ URL: https://doc.crmeb.com/.../bbb
+│  │  └─ 输出路径: docs/02_系统配置/02_缓存配置.md
+│  │
+│  └─ ### 3_日志配置
+│     ├─ URL: https://doc.crmeb.com/.../ccc
+│     └─ 输出路径: docs/02_系统配置/03_日志配置.md
 │
 └─ ... 更多模块 ...
 ```
 
-**结果输出到 docs 目录（三层结构）：**
+**结果输出到 docs 目录：**
 ```
 docs/
-├── 01_快速开始/                    ← 一级：模块
-│   ├── 1_基础概念/                 ← 二级：章节
-│   │   ├── index.md               ← 章节首页
-│   │   └── 01_快速开始.md         ← 三级：文档
-│   │
-│   ├── 2_安装部署/
-│   │   ├── index.md
-│   │   ├── 01_环境要求.md
-│   │   └── 02_安装步骤.md
-│   │
-│   ├── 3_项目结构/
-│   │   ├── index.md
-│   │   └── 01_目录说明.md
-│   │
-│   └── 4_系统配置/
-│       ├── index.md
-│       ├── 01_数据库配置.md
-│       └── 02_缓存配置.md
+├── 01_快速开始/              ← 模块 1 输出目录
+│   ├── 01_java快速开始.md    ← 章节 1 采集结果
+│   ├── 02_环境配置.md        ← 章节 2 采集结果
+│   └── 03_项目结构.md        ← 章节 3 采集结果
 │
-├── 02_系统配置/
-│   ├── 1_高级配置/
-│   │   ├── index.md
-│   │   ├── 01_日志配置.md
-│   │   └── 02_监控配置.md
-│   │
-│   └── 2_性能优化/
-│       ├── index.md
-│       └── 01_缓存优化.md
+├── 02_系统配置/              ← 模块 2 输出目录
+│   ├── 01_数据库配置.md
+│   ├── 02_缓存配置.md
+│   └── 03_日志配置.md
 │
-└── 03_商城功能/
-    ├── 1_商品管理/
-    │   ├── index.md
-    │   ├── 01_商品分类.md
-    │   └── 02_商品编辑.md
-    │
-    └── 2_订单管理/
-        ├── index.md
-        ├── 01_订单列表.md
-        └── 02_订单详情.md
+├── 03_商城功能/              ← 模块 3 输出目录
+│   ├── 01_商品管理.md
+│   ├── 02_订单管理.md
+│   ├── 03_支付配置.md
+│   └── 04_优惠券系统.md
+│
+└── ... 更多目录 ...
 ```
 
 **填写规则：**
@@ -90,11 +71,11 @@ docs/
 ## 📌 使用说明
 
 1. 在对应模块下填写采集链接
-2. 执行 `python3 smart_crawler_three_level.py` 会：
+2. 执行 `python3 smart_crawler.py` 会：
    - 读取本文件中的待采集任务
-   - 按照三层目录层级自动采集
+   - 按照模块-章节层级自动采集
    - 转换为 Markdown 格式
-   - 保存到 `docs/` 对应三层目录
+   - 保存到 `docs/` 对应目录
    - 自动更新任务状态
 
 3. 支持的状态标记：
@@ -105,59 +86,28 @@ docs/
 
 ---
 
-## 🎯 DEMO 配置（复制此配置作为模板）
-
-### ## 1_快速入门（二级章节）
-
-#### ### 1_Hello World
-- 采集状态: [✅]
-- 输出路径: `docs/01_快速开始/1_快速入门/01_Hello_World.md`
-- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
-
-#### ### 2_环境准备
-- 采集状态: [✅]
-- 输出路径: `docs/01_快速开始/1_快速入门/02_环境准备.md`
-- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
-
-#### ### 3_第一个应用
-- 采集状态: [✅]
-- 输出路径: `docs/01_快速开始/1_快速入门/03_第一个应用.md`
-- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
-
----
-
-### ## 2_核心概念（二级章节）
-
-#### ### 1_架构概述
-- 采集状态: [✅]
-- 输出路径: `docs/01_快速开始/2_核心概念/01_架构概述.md`
-- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
-
-#### ### 2_系统设计
-- 采集状态: [✅]
-- 输出路径: `docs/01_快速开始/2_核心概念/02_系统设计.md`
-- URL: https://doc.crmeb.com/crmebjava/CRMEBjava/xxx
-
----
-
 ## 📂 模块 1: Java 开发文档
 
-### ## 1_快速开始（二级章节）
+### 系统简介
+   ### 快速了解
+   - 采集状态: [ ]
+   - 输出路径: `docs/01_快速开始/01_java快速开始.md`
+   - URL: https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25961
 
-#### ### 1_系统简介
-- 采集状态: [✅]
-- 输出路径: `docs/01_快速开始/1_快速开始/01_系统简介.md`
-- URL: https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25961
+   ### 平台，上架啦图
+   - 采集状态: [ ]
+   - 输出路径: ``
+   - URL: https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25962
 
-#### ### 2_环境配置
-- 采集状态: [✅]
-- 输出路径: `docs/01_快速开始/1_快速开始/02_环境配置.md`
-- URL: https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25962
+   ### 用户端脑图
+   - 采集状态: [ ]
+   - 输出路径: ``
+   - URL: https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25963
 
-#### ### 3_项目结构
-- 采集状态: [ ]
-- 输出路径: `docs/01_快速开始/1_快速开始/03_项目结构.md`
-- URL:
+   ### 功能清单
+   - 采集状态: [ ]
+   - 输出路径: ``
+   - URL: h[ttps://doc.crmeb.com/crmebjavalandmer/CRMEBjava/25963](https://doc.crmeb.com/crmebjavalandmer/CRMEBjava/26163)
 
 ---
 
