@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'CRMEB Java 文档',
-  description: 'Java 多商户商城系统完整文档',
+  title: '文档中心',
+  description: '技术文档和方案对比',
 
   ignoreDeadLinks: true,
 
@@ -39,8 +39,8 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'CRMEB Java 多商户商城系统',
-      copyright: 'Copyright © 2024 CRMEB. All rights reserved.'
+      message: '技术文档中心',
+      copyright: ''
     },
 
     search: {

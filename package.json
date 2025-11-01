@@ -1,7 +1,7 @@
 {
-  "name": "crmeb-java-docs",
+  "name": "my-docs",
   "version": "1.0.0",
-  "description": "CRMEB Java 多商户商城系统文档",
+  "description": "技术文档和方案对比中心",
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
