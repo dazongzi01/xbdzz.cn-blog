@@ -17,8 +17,8 @@ NC='\033[0m' # No Color
 # 路径配置
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WORKFLOW_DIR="${SCRIPT_DIR}/.claude/workflow"
-ARTICLES_DIR="${SCRIPT_DIR}/.claude/articles"
-DOCS_DIR="${SCRIPT_DIR}/docs/01_初步了解"
+WORK_DIR="${SCRIPT_DIR}/.claude/work"  # 临时工作目录
+DOCS_DIR="${SCRIPT_DIR}/docs/01_初步了解"  # 最终输出目录
 PHASES_DIR="${WORKFLOW_DIR}/phases"
 CONFIG_DIR="${WORKFLOW_DIR}/config"
 TEMPLATES_DIR="${WORKFLOW_DIR}/templates"
