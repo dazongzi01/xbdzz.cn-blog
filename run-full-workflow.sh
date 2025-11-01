@@ -2,8 +2,10 @@
 
 ###############################################################################
 # 文章完整工作流 - 一条命令搞定5个阶段
-# 用法: bash run-full-workflow.sh <article-name>
-# 示例: bash run-full-workflow.sh 00_简介
+# 用法1: bash run-full-workflow.sh <article-name>
+# 用法2: bash run-full-workflow.sh /path/to/file.md
+# 示例1: bash run-full-workflow.sh 00_简介
+# 示例2: bash run-full-workflow.sh /Users/dazongzi/ZBKJ/CODEMANGER/My_Doc/docs/01_初步了解/00_简介.md
 ###############################################################################
 
 set -euo pipefail
@@ -18,14 +20,35 @@ NC='\033[0m'
 
 # 检查参数
 if [ $# -eq 0 ]; then
-    echo -e "${RED}✗ 错误：缺少文章名称${NC}"
-    echo -e "${BLUE}用法：bash run-full-workflow.sh <article-name>${NC}"
-    echo -e "${BLUE}示例：bash run-full-workflow.sh 00_简介${NC}"
+    echo -e "${RED}✗ 错误：缺少参数${NC}"
+    echo -e "${BLUE}用法1：bash run-full-workflow.sh <article-name>${NC}"
+    echo -e "${BLUE}用法2：bash run-full-workflow.sh /path/to/file.md${NC}"
+    echo -e "${BLUE}示例1：bash run-full-workflow.sh 00_简介${NC}"
+    echo -e "${BLUE}示例2：bash run-full-workflow.sh /Users/dazongzi/ZBKJ/CODEMANGER/My_Doc/docs/01_初步了解/00_简介.md${NC}"
     exit 1
 fi
 
-ARTICLE_NAME="$1"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+INPUT="$1"
+
+# 判断是文件路径还是文章名称
+if [[ "$INPUT" == /* ]] || [[ "$INPUT" == ./* ]]; then
+    # 输入是文件路径
+    if [ ! -f "$INPUT" ]; then
+        echo -e "${RED}✗ 错误：文件不存在: $INPUT${NC}"
+        exit 1
+    fi
+    # 提取文件名（不含扩展名）作为文章名称
+    ARTICLE_NAME=$(basename "$INPUT" .md)
+    # 复制文件到工作目录
+    echo -e "${BLUE}ℹ 读取文件: $INPUT${NC}"
+    mkdir -p "${SCRIPT_DIR}/.claude/articles/${ARTICLE_NAME}"
+    cp "$INPUT" "${SCRIPT_DIR}/.claude/articles/${ARTICLE_NAME}/00-raw-input.md"
+    echo -e "${GREEN}✓ 文件已准备${NC}"
+else
+    # 输入是文章名称
+    ARTICLE_NAME="$INPUT"
+fi
 
 echo -e "${CYAN}"
 echo "╔════════════════════════════════════════════════════════════════╗"

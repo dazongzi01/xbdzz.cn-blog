@@ -1,0 +1,35 @@
+{
+  "article_name": "00_简介",
+  "title": "00_简介",
+  "created_at": "2025-11-01T08:59:46Z",
+  "updated_at": "2025-11-01T10:14:49.219398Z",
+  "phases": {
+    "phase1": {
+      "status": "completed",
+      "output": "01-planning.md",
+      "completed_at": "2025-11-01T10:13:22.871454Z"
+    },
+    "phase2": {
+      "status": "pending",
+      "output": "02-draft.md"
+    },
+    "phase3": {
+      "status": "completed",
+      "output": "03-guidelines.md",
+      "completed_at": "2025-11-01T10:14:49.101205Z"
+    },
+    "phase4": {
+      "status": "completed",
+      "output": "04-checklist.md",
+      "completed_at": "2025-11-01T10:14:49.161025Z"
+    },
+    "phase5": {
+      "status": "completed",
+      "output": "05-final.md",
+      "completed_at": "2025-11-01T10:14:49.219306Z"
+    }
+  },
+  "quality_score": null,
+  "published": false,
+  "logs": "logs/execution.log"
+}

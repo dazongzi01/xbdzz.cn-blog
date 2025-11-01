@@ -1,0 +1,130 @@
+{
+  "article_name": "00_简介",
+  "title": "00_简介",
+  "created_at": "2025-11-01T10:14:49.138159Z",
+  "format_check": {
+    "issues": [],
+    "suggestions": [
+      "Consider organizing headings in hierarchical order"
+    ],
+    "word_count": 5472,
+    "heading_count": 69,
+    "code_blocks": 20,
+    "links": 0,
+    "images": 0,
+    "tables": 9,
+    "avg_line_length": 14
+  },
+  "optimization_items": {
+    "structure": [
+      {
+        "item": "标题层级正确 (H1 -> H2 -> H3)",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "item": "有清晰的目录结构",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "item": "各部分长度比例合理",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "item": "段落之间过渡顺畅",
+        "status": "pending",
+        "priority": "medium"
+      }
+    ],
+    "typography": [
+      {
+        "item": "使用正确的标点符号",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "item": "中英文间距正确",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "item": "没有多余的空行",
+        "status": "pending",
+        "priority": "low"
+      },
+      {
+        "item": "缩进和格式一致",
+        "status": "pending",
+        "priority": "medium"
+      }
+    ],
+    "content": [
+      {
+        "item": "所有观点都有支撑示例",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "item": "没有重复内容",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "item": "没有拼写错误",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "item": "术语使用一致",
+        "status": "pending",
+        "priority": "medium"
+      }
+    ],
+    "media": [
+      {
+        "item": "所有图片都已合适地插入",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "item": "所有代码块都有语言标记",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "item": "表格格式正确",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "item": "所有链接都有效",
+        "status": "pending",
+        "priority": "high"
+      }
+    ],
+    "readability": [
+      {
+        "item": "字数在目标范围内 (~5000)",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "item": "段落长度合理 (建议300-400字)",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "item": "句子长度合理",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "item": "使用清晰的列表和要点",
+        "status": "pending",
+        "priority": "medium"
+      }
+    ]
+  }
+}

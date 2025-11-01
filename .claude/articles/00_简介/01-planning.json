@@ -1,0 +1,191 @@
+{
+  "article_name": "00_简介",
+  "title": "00_简介",
+  "created_at": "2025-11-01T10:13:22.849275Z",
+  "content_analysis": {
+    "sections_count": 0,
+    "headings_count": 0,
+    "links_count": 0,
+    "images_count": 0,
+    "estimated_word_count": 618,
+    "main_sections": [],
+    "structure_quality": "needs_improvement"
+  },
+  "audiences": [
+    "技术人员",
+    "运营人员",
+    "产品经理"
+  ],
+  "writing_style": "俏皮有趣，专业准确",
+  "target_word_count": 5000,
+  "required_illustrations": 4,
+  "outline": {
+    "简介": {
+      "description": "一句话定义，核心价值说明",
+      "target_audience": "all",
+      "key_points": [
+        "定义",
+        "价值",
+        "应用场景"
+      ]
+    },
+    "特性概览": {
+      "description": "列举主要特性和优势",
+      "target_audience": [
+        "技术人员",
+        "产品经理"
+      ],
+      "key_points": [
+        "核心特性",
+        "优势对比",
+        "功能列表"
+      ]
+    },
+    "核心架构": {
+      "description": "详细说明系统架构和设计",
+      "target_audience": [
+        "技术人员"
+      ],
+      "key_points": [
+        "架构图",
+        "模块划分",
+        "技术栈"
+      ]
+    },
+    "模块详解": {
+      "description": "逐个解释主要模块功能",
+      "target_audience": [
+        "技术人员",
+        "运营人员"
+      ],
+      "key_points": [
+        "模块功能",
+        "使用场景",
+        "配置说明"
+      ]
+    },
+    "业务流程": {
+      "description": "说明整个业务流程",
+      "target_audience": [
+        "运营人员",
+        "产品经理"
+      ],
+      "key_points": [
+        "流程图",
+        "关键步骤",
+        "使用实例"
+      ]
+    },
+    "对比分析": {
+      "description": "与其他方案对比",
+      "target_audience": [
+        "产品经理",
+        "决策者"
+      ],
+      "key_points": [
+        "功能对比",
+        "优劣分析",
+        "选择建议"
+      ]
+    },
+    "应用场景": {
+      "description": "具体应用场景和使用例子",
+      "target_audience": "all",
+      "key_points": [
+        "场景1",
+        "场景2",
+        "场景3"
+      ]
+    },
+    "快速开始": {
+      "description": "入门指南和基础配置",
+      "target_audience": [
+        "技术人员"
+      ],
+      "key_points": [
+        "环境要求",
+        "安装步骤",
+        "初始配置"
+      ]
+    },
+    "常见问题": {
+      "description": "FAQ部分",
+      "target_audience": "all",
+      "key_points": [
+        "技术问题",
+        "使用问题",
+        "故障排除"
+      ]
+    },
+    "最佳实践": {
+      "description": "最佳实践和技巧",
+      "target_audience": [
+        "技术人员",
+        "运营人员"
+      ],
+      "key_points": [
+        "性能优化",
+        "安全建议",
+        "扩展方法"
+      ]
+    }
+  },
+  "audience_segments": {
+    "技术人员": {
+      "focus": [
+        "架构",
+        "代码示例",
+        "最佳实践"
+      ],
+      "tone": "专业、准确、深入",
+      "content_ratio": "40%"
+    },
+    "运营人员": {
+      "focus": [
+        "功能说明",
+        "业务流程",
+        "配置指南"
+      ],
+      "tone": "清晰、实用、易理解",
+      "content_ratio": "35%"
+    },
+    "产品经理": {
+      "focus": [
+        "特性对比",
+        "业务价值",
+        "应用场景"
+      ],
+      "tone": "专业、有见地、战略性",
+      "content_ratio": "25%"
+    }
+  },
+  "key_messages": [
+    "什么是00_简介",
+    "为什么需要00_简介",
+    "00_简介的核心优势",
+    "如何使用00_简介",
+    "00_简介的适用场景"
+  ],
+  "illustrations_plan": {
+    "count": 4,
+    "types": [
+      "架构图",
+      "流程图",
+      "功能截图",
+      "对比表格"
+    ],
+    "placement": {
+      "核心架构": "架构图",
+      "业务流程": "流程图",
+      "模块详解": "功能截图",
+      "对比分析": "对比表格"
+    }
+  },
+  "estimated_timeline": {
+    "phase2_draft": "4-8小时",
+    "phase3_illustrations": "1小时",
+    "phase4_format": "45分钟",
+    "phase5_publish": "1小时",
+    "total": "8-12小时"
+  }
+}
