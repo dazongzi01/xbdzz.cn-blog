@@ -2,6 +2,8 @@
 
 这个文件夹包含所有项目的文档、工具脚本和配置指南，按功能模块组织。
 
+> **💡 提示**：常用脚本 `build.sh`, `write.sh`, `generate.sh`, `deploy.sh` 都有**根目录副本**，可以直接在根目录运行，无需进入 `DOC/` 文件夹。这些脚本在本文件夹中也有完整源文件供备份和查看。
+
 ---
 
 ## 📁 目录结构
@@ -118,7 +120,7 @@ http://localhost:5173/01_初步了解/01_快速了解?dazongzi=666
 |------|------|------|
 | **开发预览** | `npm run dev` | 根目录 |
 | **编译构建** | `npm run build:force` | 根目录 |
-| **自动部署** | `./DOC/Deployment/deploy.sh all` | 根目录 |
+| **自动部署** | `./deploy.sh all` | 根目录 |
 | **发布到平台** | 添加 `?dazongzi=666` | 文档URL |
 | **查看部署指南** | `./DOC/Deployment/DEPLOY_GUIDE.md` | 本目录 |
 | **查看发布指南** | `./DOC/Platform_Publishing/PLATFORM_PUBLISHER_GUIDE.md` | 本目录 |

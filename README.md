@@ -416,19 +416,19 @@ bash write.sh 00_CRMEB
 
 ```bash
 # 1️⃣ 编译文档
-./DOC/Deployment/deploy.sh build
+./deploy.sh build
 
 # 2️⃣ 编译并显示统计信息
-./DOC/Deployment/deploy.sh build --stats
+./deploy.sh build --stats
 
 # 3️⃣ 打包部署文件
-./DOC/Deployment/deploy.sh package
+./deploy.sh package
 
 # 4️⃣ 编译 + 打包（推荐用于日常构建）
-./DOC/Deployment/deploy.sh all
+./deploy.sh all
 
 # 5️⃣ 完整部署（编译 + 打包 + 上传到服务器）
-./DOC/Deployment/deploy.sh deploy user@example.com /var/www/html
+./deploy.sh deploy user@example.com /var/www/html
 ```
 
 ### 部署流程
@@ -436,7 +436,7 @@ bash write.sh 00_CRMEB
 **场景 A：本地构建，手动上传**
 ```bash
 # 编译和打包
-./DOC/Deployment/deploy.sh all
+./deploy.sh all
 
 # 打包文件在：deploy/ 目录（vitepress-dist_*.tar.gz）
 # 手动上传到服务器后解压即可
@@ -445,7 +445,7 @@ bash write.sh 00_CRMEB
 **场景 B：完全自动化部署**
 ```bash
 # 一条命令搞定：编译 → 打包 → 上传
-./DOC/Deployment/deploy.sh deploy user@example.com /var/www/html
+./deploy.sh deploy user@example.com /var/www/html
 ```
 
 ### 服务器部署步骤
@@ -473,7 +473,9 @@ rm -rf dist vitepress-dist_*.tar.gz
 
 完整的部署指南和配置说明，请查看：
 - **部署指南**：[DOC/Deployment/DEPLOY_GUIDE.md](./DOC/Deployment/DEPLOY_GUIDE.md)
-- **部署脚本**：[DOC/Deployment/deploy.sh](./DOC/Deployment/deploy.sh)
+- **部署脚本源文件**：[DOC/Deployment/deploy.sh](./DOC/Deployment/deploy.sh)（备份副本）
+
+> 注：常用脚本 `build.sh`, `write.sh`, `generate.sh`, `deploy.sh` 都在根目录，可直接运行。详见 [DOC/README.md](./DOC/README.md)
 
 ### 脚本功能
 
