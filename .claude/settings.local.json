@@ -59,7 +59,8 @@
       "Bash(__NEW_LINE__ echo \"✅ 项目组织完成！\" echo \"\" echo \"📁 根目录现在干净了：\" ls -1)",
       "Bash(./build.sh)",
       "Bash(./build.sh:*)",
-      "Bash(__NEW_LINE__ echo \"✅ 已全部改为 ''大粽子全局的''！\")"
+      "Bash(__NEW_LINE__ echo \"✅ 已全部改为 ''大粽子全局的''！\")",
+      "Bash(__NEW_LINE__ echo \"✅ 已修正为纯粹的 ''''大粽子''''！\" echo \"\" echo \"🔍 验证所有配置：\" echo \"\" echo \"config.ts:\" grep -n \"title\\|description\\|message\" docs/.vitepress/config.ts)"
     ],
     "deny": [],
     "ask": []
