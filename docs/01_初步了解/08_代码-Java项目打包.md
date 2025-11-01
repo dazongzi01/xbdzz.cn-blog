@@ -186,22 +186,17 @@ cd /www/wwwroot/crmeb/
 java -jar crmeb-admin-xxx.jar
 ```
 
-你会看到项目启动日志：
+你会看到项目启动日志显示（Spring Boot 标志和启动信息）。
 
-```
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
-2024-11-01 12:00:00.000  INFO 1234 --- [main] com.crmeb.admin.CrmebAdminApplication : Starting CrmebAdminApplication on server
-```
+**启动过程中会显示：**
+1. Spring Boot 项目启动的 ASCII 艺术
+2. 日志行：`Starting CrmebAdminApplication on server`
+3. 数据库连接日志
+4. 最终显示：`Started CrmebAdminApplication`
 
 ⏳ **等待项目完全启动**（通常 10-30 秒）
 
-看到 `Started CrmebAdminApplication` 说明启动成功了！
+✅ 看到 `Started CrmebAdminApplication` 说明启动成功了！此时项目已经就绪。
 
 ⚠️ **注意：** 这样启动的问题是，关闭终端连接后项目会停止。
 
