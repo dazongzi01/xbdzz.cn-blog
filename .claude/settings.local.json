@@ -58,7 +58,8 @@
       "Bash(__NEW_LINE__ cd /Users/dazongzi/ZBKJ/CODEMANGER/My_Doc)",
       "Bash(__NEW_LINE__ echo \"✅ 项目组织完成！\" echo \"\" echo \"📁 根目录现在干净了：\" ls -1)",
       "Bash(./build.sh)",
-      "Bash(./build.sh:*)"
+      "Bash(./build.sh:*)",
+      "Bash(__NEW_LINE__ echo \"✅ 已全部改为 ''大粽子全局的''！\")"
     ],
     "deny": [],
     "ask": []
