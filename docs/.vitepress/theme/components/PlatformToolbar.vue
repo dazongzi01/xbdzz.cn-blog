@@ -118,72 +118,82 @@ const copyToClipboard = async () => {
 
   if (!previewElement) {
     console.error('❌ 找不到预览内容元素')
-    alert('找不到预览内容，请刷新页面重试')
+    alert('❌ 找不到预览内容，请刷新页面重试')
     return
   }
 
-  try {
-    console.log('📝 方案1: 使用 Range + Selection 复制 DOM...')
+  const htmlContent = previewElement.innerHTML
+  console.log('✓ HTML 内容长度:', htmlContent.length, '字符')
 
-    // 选择预览元素的内容
+  if (!htmlContent || htmlContent.trim().length === 0) {
+    console.error('❌ 预览内容为空')
+    alert('❌ 预览内容为空')
+    return
+  }
+
+  // 方案1: 优先使用现代 Clipboard API（推荐）
+  if (navigator.clipboard) {
+    try {
+      console.log('📝 方案1: 使用 Clipboard API...')
+
+      // 创建 HTML 格式的剪贴板数据
+      const blob = new Blob([htmlContent], { type: 'text/html' })
+      const data = [new ClipboardItem({ 'text/html': blob })]
+
+      // 尝试写入 HTML（富文本）
+      try {
+        await navigator.clipboard.write(data)
+        console.log('✅ HTML 已复制到剪贴板（富文本格式）')
+        alert('✅ 复制成功！\n\n可以直接粘贴到目标平台编辑器\n（保留所有样式和格式）')
+        return
+      } catch (err) {
+        console.warn('⚠️ 无法复制 HTML 格式，尝试纯文本...', err)
+
+        // 降级到纯文本
+        try {
+          await navigator.clipboard.writeText(htmlContent)
+          console.log('✅ 已复制为纯文本格式')
+          alert('✅ 复制成功！（纯文本格式）\n\n粘贴到目标平台后，部分样式可能需要手动调整')
+          return
+        } catch (err2) {
+          console.error('❌ 纯文本复制也失败:', err2)
+        }
+      }
+    } catch (err) {
+      console.error('❌ Clipboard API 异常:', err)
+    }
+  }
+
+  // 方案2: 降级到传统的 execCommand（兼容旧浏览器）
+  try {
+    console.log('📝 方案2: 使用 Range + Selection...')
+
     const range = document.createRange()
     range.selectNodeContents(previewElement)
 
-    // 获取当前选择并替换为我们的范围
     const selection = window.getSelection()
     if (selection) {
       selection.removeAllRanges()
       selection.addRange(range)
-    }
 
-    // 执行复制命令
-    const successful = document.execCommand('copy')
-    console.log('✓ 复制命令执行:', successful ? '成功' : '失败')
+      // 执行复制命令
+      const successful = document.execCommand('copy')
+      console.log('✓ execCommand 执行:', successful ? '成功' : '失败')
 
-    if (successful) {
-      // 清除选择
-      if (selection) {
+      if (successful) {
         selection.removeAllRanges()
-      }
-      alert('✅ 复制成功！可以粘贴到目标平台了')
-      return
-    }
-  } catch (err) {
-    console.error('❌ 方案1失败:', err)
-  }
-
-  // 降级方案：尝试 Clipboard API
-  try {
-    console.log('📝 方案2: 使用 Clipboard API...')
-
-    // 如果浏览器支持，使用现代 API
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      // 获取纯文本（包含 HTML 标记）
-      const htmlText = previewElement.innerHTML
-
-      // 创建富文本格式
-      const blob = new Blob([htmlText], { type: 'text/html' })
-      const data = [new ClipboardItem({ 'text/html': blob })]
-
-      // 尝试写入 HTML
-      try {
-        await navigator.clipboard.write(data)
-        console.log('✓ HTML 已复制到剪贴板')
-        alert('✅ 复制成功！可以粘贴到目标平台了')
-        return
-      } catch (err) {
-        console.warn('⚠️ 无法复制 HTML，尝试纯文本...', err)
-        // 回退到纯文本
-        await navigator.clipboard.writeText(htmlText)
-        alert('✅ 已复制（纯文本格式）')
+        console.log('✅ 内容已复制')
+        alert('✅ 复制成功！\n\n可以粘贴到目标平台编辑器')
         return
       }
     }
   } catch (err) {
-    console.error('❌ Clipboard API 失败:', err)
+    console.error('❌ 方案2 失败:', err)
   }
 
-  alert('复制失败，请手动复制预览内容')
+  // 所有方案都失败
+  console.error('❌ 所有复制方案都失败了')
+  alert('❌ 自动复制失败\n\n请尝试：\n1. 手动选中预览内容（Cmd+A）\n2. 手动复制（Cmd+C）\n3. 粘贴到目标平台（Cmd+V）')
 }
 
 const closePreview = () => {

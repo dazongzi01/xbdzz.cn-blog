@@ -28,6 +28,12 @@ const platformStyles = {
     pre: 'background: #f8f8f8; padding: 15px; border-radius: 5px; overflow-x: auto; border-left: 3px solid #07c160; line-height: 1.6; font-size: 13px;',
     img: 'display: block; margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; max-width: 100%; border-top-style: none; border-bottom-style: none; border-left-style: none; border-right-style: none; border-top-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-right-width: 3px; border-top-color: rgba(0, 0, 0, 0.4); border-bottom-color: rgba(0, 0, 0, 0.4); border-left-color: rgba(0, 0, 0, 0.4); border-right-color: rgba(0, 0, 0, 0.4); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;',
     blockquote: 'border-left: 4px solid #07c160; padding-left: 15px; margin: 15px 0; color: #666; font-style: italic;',
+    table: 'width: 100%; border-collapse: collapse; margin: 15px 0;',
+    tr: 'border-bottom: 1px solid #ddd;',
+    th: 'background: #f0f0f0; padding: 10px; text-align: left; font-weight: bold; color: rgb(7, 193, 96);',
+    td: 'padding: 10px; border-right: 1px solid #ddd;',
+    ul: 'margin: 10px 0; padding-left: 20px;',
+    ol: 'margin: 10px 0; padding-left: 20px;',
   },
   juejin: {
     container: 'margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; padding-top: 0px; padding-bottom: 0px; padding-left: 10px; padding-right: 10px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Helvetica, Arial, sans-serif; font-size: 16px; color: rgb(37, 43, 58); line-height: 1.6em; word-break: break-word;',
@@ -43,6 +49,12 @@ const platformStyles = {
     pre: 'background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: 13px;',
     img: 'display: block; margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; max-width: 100%; border-radius: 4px;',
     blockquote: 'border-left: 4px solid #1e80ff; padding-left: 15px; margin: 15px 0; color: #666;',
+    table: 'width: 100%; border-collapse: collapse; margin: 15px 0;',
+    tr: 'border-bottom: 1px solid #ddd;',
+    th: 'background: #f0f0f0; padding: 10px; text-align: left; font-weight: bold; color: rgb(30, 128, 255);',
+    td: 'padding: 10px; border-right: 1px solid #ddd;',
+    ul: 'margin: 10px 0; padding-left: 20px;',
+    ol: 'margin: 10px 0; padding-left: 20px;',
   },
   csdn: {
     container: 'margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; padding-top: 0px; padding-bottom: 0px; padding-left: 10px; padding-right: 10px; font-family: \'Segoe UI\', \'Microsoft YaHei\', sans-serif; font-size: 16px; color: rgb(51, 51, 51); line-height: 1.5em; word-break: break-word;',
@@ -58,6 +70,12 @@ const platformStyles = {
     pre: 'background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: 13px;',
     img: 'display: block; margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; max-width: 100%; border-radius: 4px;',
     blockquote: 'border-left: 4px solid #fc5531; padding-left: 15px; margin: 15px 0; color: #666;',
+    table: 'width: 100%; border-collapse: collapse; margin: 15px 0;',
+    tr: 'border-bottom: 1px solid #ddd;',
+    th: 'background: #f0f0f0; padding: 10px; text-align: left; font-weight: bold; color: rgb(252, 85, 49);',
+    td: 'padding: 10px; border-right: 1px solid #ddd;',
+    ul: 'margin: 10px 0; padding-left: 20px;',
+    ol: 'margin: 10px 0; padding-left: 20px;',
   },
   zhihu: {
     container: 'margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; padding-top: 0px; padding-bottom: 0px; padding-left: 10px; padding-right: 10px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Helvetica, Arial, sans-serif; font-size: 16px; color: rgb(26, 26, 26); line-height: 1.6em; word-break: break-word;',
@@ -73,6 +91,12 @@ const platformStyles = {
     pre: 'background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: 13px;',
     img: 'display: block; margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; max-width: 100%; border-radius: 4px;',
     blockquote: 'border-left: 4px solid #999; padding-left: 15px; margin: 15px 0; color: #666;',
+    table: 'width: 100%; border-collapse: collapse; margin: 15px 0;',
+    tr: 'border-bottom: 1px solid #ddd;',
+    th: 'background: #f0f0f0; padding: 10px; text-align: left; font-weight: bold; color: rgb(26, 26, 26);',
+    td: 'padding: 10px; border-right: 1px solid #ddd;',
+    ul: 'margin: 10px 0; padding-left: 20px;',
+    ol: 'margin: 10px 0; padding-left: 20px;',
   },
 }
 
@@ -83,8 +107,8 @@ const platformStyles = {
 function applyStylesWithRegex(html: string, styles: typeof platformStyles.wechat): string {
   let result = html
 
-  // 为各个标签添加 style 属性
-  const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'code', 'pre', 'img', 'blockquote']
+  // 为各个标签添加 style 属性（包括表格和列表标签）
+  const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'code', 'pre', 'img', 'blockquote', 'table', 'tr', 'td', 'th', 'ul', 'ol']
 
   tags.forEach(tag => {
     if (styles[tag as keyof typeof styles]) {
