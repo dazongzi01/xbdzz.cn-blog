@@ -205,24 +205,8 @@ def generate_draft_document(article_name, raw_content, config, plan, logger):
         # Optimize draft
         draft = optimize_draft(draft, config.get('audiences', []), logger)
 
-        # Add metadata
+        # Calculate word count (no footer added - keep document clean)
         word_count = MarkdownUtils.get_word_count_estimate(draft)
-        footer = f"""
-
----
-
-📊 **文章统计信息**
-- 字数: 约 {word_count} 字
-- 生成时间: {datetime.utcnow().isoformat()}
-- 模型: Claude 3.5 Sonnet
-- 状态: 初稿，需要配图和排版优化
-
-⚠️ **下一步**:
-1. Phase 3: 生成配图指南
-2. Phase 4: 排版优化
-3. Phase 5: 发布检查清单
-"""
-        draft_with_metadata = draft + footer
 
         # Save draft
         draft_file = Path(config.get('work_dir', '.')) / '02-draft.md' if 'work_dir' in config else Path('.') / '02-draft.md'
@@ -230,7 +214,7 @@ def generate_draft_document(article_name, raw_content, config, plan, logger):
         # Since config doesn't have work_dir passed directly, use sys.argv approach
         # But we'll handle this differently - the parent should pass work_dir
 
-        return draft_with_metadata, word_count
+        return draft, word_count
 
     except Exception as e:
         logger.error(f"Error generating draft: {str(e)}")
@@ -282,23 +266,8 @@ def main():
 
         word_count = MarkdownUtils.get_word_count_estimate(draft)
 
-        # Add metadata footer
-        footer = f"""
-
----
-
-📊 **文章统计信息**
-- 字数: 约 {word_count} 字
-- 生成时间: {datetime.utcnow().isoformat()}
-- 模型: Claude 3.5 Sonnet
-- 状态: 初稿，需要配图和排版优化
-
-**下一步**:
-1. Phase 3: 生成配图指南
-2. Phase 4: 排版优化
-3. Phase 5: 发布检查清单
-"""
-        final_draft = draft + footer
+        # No metadata footer - keep document clean
+        final_draft = draft
 
         # Save draft
         draft_file = Path(args.work_dir) / '02-draft.md'
