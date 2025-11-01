@@ -1,7 +1,7 @@
 {
   "name": "my-docs",
   "version": "1.0.0",
-  "description": "技术文档和方案对比中心",
+  "description": "大粽子全局的",
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",

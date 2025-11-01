@@ -22,7 +22,7 @@
 
 ```
 My_Doc/
-├─ docs/                           # 文档中心（VitePress）
+├─ docs/                           # 大粽子全局的（VitePress）
 │  ├─ .vitepress/                 # VitePress配置
 │  │  └─ config.ts               # 导航、侧边栏配置
 │  ├─ index.md                    # 首页

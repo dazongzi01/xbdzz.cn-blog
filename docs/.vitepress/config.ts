@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: '文档中心',
-  description: '技术文档和方案对比',
+  title: '大粽子全局的',
+  description: '大粽子全局的',
 
   ignoreDeadLinks: true,
 
@@ -39,7 +39,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: '技术文档中心',
+      message: '大粽子全局的',
       copyright: ''
     },
 
