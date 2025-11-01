@@ -317,6 +317,7 @@ const closePreview = () => {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 400px;
 }
 
 .preview-header {
@@ -326,6 +327,7 @@ const closePreview = () => {
   padding: 16px 20px;
   border-bottom: 1px solid #e5e7eb;
   background: #f9fafb;
+  flex-shrink: 0;
 }
 
 .preview-title {
@@ -348,6 +350,7 @@ const closePreview = () => {
   justify-content: center;
   border-radius: 6px;
   transition: all 0.2s;
+  flex-shrink: 0;
 }
 
 .close-btn:hover {
@@ -360,6 +363,7 @@ const closePreview = () => {
   overflow-y: auto;
   padding: 20px;
   background: white;
+  min-height: 200px;
 }
 
 .preview-content {
@@ -438,6 +442,7 @@ const closePreview = () => {
   padding: 16px 20px;
   border-top: 1px solid #e5e7eb;
   background: #f9fafb;
+  flex-shrink: 0;
 }
 
 .copy-btn {
