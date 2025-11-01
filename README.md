@@ -408,4 +408,81 @@ bash write.sh 00_CRMEB
 
 ---
 
+## 🚀 编译和部署
+
+这个项目包含完整的自动化部署解决方案，支持一键编译、打包和上传到服务器。
+
+### 快速部署命令
+
+```bash
+# 1️⃣ 编译文档
+./DOC/Deployment/deploy.sh build
+
+# 2️⃣ 编译并显示统计信息
+./DOC/Deployment/deploy.sh build --stats
+
+# 3️⃣ 打包部署文件
+./DOC/Deployment/deploy.sh package
+
+# 4️⃣ 编译 + 打包（推荐用于日常构建）
+./DOC/Deployment/deploy.sh all
+
+# 5️⃣ 完整部署（编译 + 打包 + 上传到服务器）
+./DOC/Deployment/deploy.sh deploy user@example.com /var/www/html
+```
+
+### 部署流程
+
+**场景 A：本地构建，手动上传**
+```bash
+# 编译和打包
+./DOC/Deployment/deploy.sh all
+
+# 打包文件在：deploy/ 目录（vitepress-dist_*.tar.gz）
+# 手动上传到服务器后解压即可
+```
+
+**场景 B：完全自动化部署**
+```bash
+# 一条命令搞定：编译 → 打包 → 上传
+./DOC/Deployment/deploy.sh deploy user@example.com /var/www/html
+```
+
+### 服务器部署步骤
+
+假设已通过上述命令上传了部署包：
+
+```bash
+# 1. 登录服务器
+ssh user@example.com
+
+# 2. 进入目标目录
+cd /var/www/html
+
+# 3. 解压部署包
+tar -xzf vitepress-dist_*.tar.gz
+
+# 4. 移动文件到正确位置
+mv dist/* .
+
+# 5. 清理临时文件
+rm -rf dist vitepress-dist_*.tar.gz
+```
+
+### 详细文档
+
+完整的部署指南和配置说明，请查看：
+- **部署指南**：[DOC/Deployment/DEPLOY_GUIDE.md](./DOC/Deployment/DEPLOY_GUIDE.md)
+- **部署脚本**：[DOC/Deployment/deploy.sh](./DOC/Deployment/deploy.sh)
+
+### 脚本功能
+
+✅ **自动编译** - 清理 → 编译 → 生成静态网站
+✅ **编译统计** - HTML、JS、CSS、图片等文件计数
+✅ **智能打包** - tar.gz压缩，自动保留最近5个包
+✅ **自动上传** - 使用scp上传到服务器
+✅ **彩色输出** - 清晰的进度显示和错误提示
+
+---
+
 *最后更新：2025年11月1日*

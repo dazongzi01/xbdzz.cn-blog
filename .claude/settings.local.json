@@ -52,7 +52,10 @@
       "Bash(bash:*)",
       "Bash(npm run build:*)",
       "Bash(npm run build:force:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(grep:*)",
+      "Bash(awk:*)",
+      "Bash(__NEW_LINE__ cd /Users/dazongzi/ZBKJ/CODEMANGER/My_Doc)"
     ],
     "deny": [],
     "ask": []
