@@ -38,7 +38,18 @@
       "Bash(git rm:*)",
       "Bash(chmod:*)",
       "Bash(python3:*)",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "Bash(pip3 install:*)",
+      "Bash(cat:*)",
+      "Bash(tree:*)",
+      "Bash(for dir in docs/*/)",
+      "Bash(done)",
+      "WebFetch(domain:doc.crmeb.com)",
+      "Bash(mkdir:*)",
+      "Bash(bash workflow.sh:*)",
+      "Bash(awk '{print $9, \"\"\"\"(\"\"\"\" $5 \"\"\"\")\"\"\"\"}')",
+      "Bash(bash generate.sh:*)",
+      "Bash(bash:*)"
     ],
     "deny": [],
     "ask": []
