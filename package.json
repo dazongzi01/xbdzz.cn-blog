@@ -1,7 +1,7 @@
 {
   "name": "my-docs",
   "version": "1.0.0",
-  "description": "大粽子全局的",
+  "description": "大粽子",
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
