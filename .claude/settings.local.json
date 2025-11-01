@@ -49,7 +49,10 @@
       "Bash(bash workflow.sh:*)",
       "Bash(awk '{print $9, \"\"\"\"(\"\"\"\" $5 \"\"\"\")\"\"\"\"}')",
       "Bash(bash generate.sh:*)",
-      "Bash(bash:*)"
+      "Bash(bash:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run build:force:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []

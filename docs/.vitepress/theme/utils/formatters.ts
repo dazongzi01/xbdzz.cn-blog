@@ -1,16 +1,16 @@
 /**
- * 多平台内容格式化工具 - V4 (mdnice 完全复现)
- * 直接模仿 mdnice 的输出格式
+ * 多平台内容格式化工具
+ * 支持：微信公众号、掘金、CSDN、知乎
  *
  * 核心策略：
  * - 提取原始 HTML
- * - 用正则表达式应用样式（不使用 DOM，避免问题）
- * - 包裹在 <section id="nice"> 中
+ * - 用正则表达式应用样式
+ * - 包裹在标准容器中
  * - 输出最终的完整 HTML
  */
 
 // ============================================
-// 各平台的样式定义（与 mdnice 保持一致）
+// 各平台的样式定义
 // ============================================
 
 const platformStyles = {
@@ -27,7 +27,7 @@ const platformStyles = {
     code: 'background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: Consolas, Monaco, monospace; color: #e74c3c; font-size: 14px;',
     pre: 'background: #f8f8f8; padding: 15px; border-radius: 5px; overflow-x: auto; border-left: 3px solid #07c160; line-height: 1.6; font-size: 13px;',
     img: 'display: block; margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; max-width: 100%; border-top-style: none; border-bottom-style: none; border-left-style: none; border-right-style: none; border-top-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-right-width: 3px; border-top-color: rgba(0, 0, 0, 0.4); border-bottom-color: rgba(0, 0, 0, 0.4); border-left-color: rgba(0, 0, 0, 0.4); border-right-color: rgba(0, 0, 0, 0.4); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;',
-    blockquote: 'border-left: 4px solid #ddd; padding-left: 15px; margin: 15px 0; color: #666; font-style: italic;',
+    blockquote: 'border-left: 4px solid #07c160; padding-left: 15px; margin: 15px 0; color: #666; font-style: italic;',
   },
   juejin: {
     container: 'margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; padding-top: 0px; padding-bottom: 0px; padding-left: 10px; padding-right: 10px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Helvetica, Arial, sans-serif; font-size: 16px; color: rgb(37, 43, 58); line-height: 1.6em; word-break: break-word;',
@@ -42,7 +42,7 @@ const platformStyles = {
     code: 'background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: monospace; color: #d73a49; font-size: 14px;',
     pre: 'background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: 13px;',
     img: 'display: block; margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; max-width: 100%; border-radius: 4px;',
-    blockquote: 'border-left: 4px solid #999; padding-left: 15px; margin: 15px 0; color: #666;',
+    blockquote: 'border-left: 4px solid #1e80ff; padding-left: 15px; margin: 15px 0; color: #666;',
   },
   csdn: {
     container: 'margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; padding-top: 0px; padding-bottom: 0px; padding-left: 10px; padding-right: 10px; font-family: \'Segoe UI\', \'Microsoft YaHei\', sans-serif; font-size: 16px; color: rgb(51, 51, 51); line-height: 1.5em; word-break: break-word;',
@@ -57,7 +57,7 @@ const platformStyles = {
     code: 'background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: Consolas, Monaco, monospace; color: #e74c3c; font-size: 14px;',
     pre: 'background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: 13px;',
     img: 'display: block; margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; max-width: 100%; border-radius: 4px;',
-    blockquote: 'border-left: 4px solid #ddd; padding-left: 15px; margin: 15px 0; color: #666;',
+    blockquote: 'border-left: 4px solid #fc5531; padding-left: 15px; margin: 15px 0; color: #666;',
   },
   zhihu: {
     container: 'margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; padding-top: 0px; padding-bottom: 0px; padding-left: 10px; padding-right: 10px; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Helvetica, Arial, sans-serif; font-size: 16px; color: rgb(26, 26, 26); line-height: 1.6em; word-break: break-word;',
@@ -77,22 +77,20 @@ const platformStyles = {
 }
 
 // ============================================
-// 核心格式化函数（使用正则替换，避免 DOM 问题）
+// 核心格式化函数
 // ============================================
 
 function applyStylesWithRegex(html: string, styles: typeof platformStyles.wechat): string {
   let result = html
 
-  // 为各个标签添加 style 属性（使用正则表达式）
+  // 为各个标签添加 style 属性
   const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'code', 'pre', 'img', 'blockquote']
 
   tags.forEach(tag => {
     if (styles[tag as keyof typeof styles]) {
       const style = styles[tag as keyof typeof styles]
-      // 匹配开标签，并添加 style 和 data-tool 属性
       const regex = new RegExp(`<${tag}([^>]*)>`, 'g')
       result = result.replace(regex, (match, attrs) => {
-        // 如果已经有 style，不覆盖（保留原有属性）
         if (attrs.includes('style=')) {
           return match
         }
@@ -110,11 +108,7 @@ function applyStylesWithRegex(html: string, styles: typeof platformStyles.wechat
 
 export function formatForWechat(htmlContent: string): string {
   let html = htmlContent
-
-  // 应用样式
   html = applyStylesWithRegex(html, platformStyles.wechat)
-
-  // 包裹在标准容器中
   return `<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="${platformStyles.wechat.container}">
 ${html}
 </section>`
@@ -122,11 +116,7 @@ ${html}
 
 export function formatForJuejin(htmlContent: string): string {
   let html = htmlContent
-
-  // 应用样式
   html = applyStylesWithRegex(html, platformStyles.juejin)
-
-  // 包裹在标准容器中
   return `<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="${platformStyles.juejin.container}">
 ${html}
 </section>`
@@ -134,11 +124,7 @@ ${html}
 
 export function formatForCSDN(htmlContent: string): string {
   let html = htmlContent
-
-  // 应用样式
   html = applyStylesWithRegex(html, platformStyles.csdn)
-
-  // 包裹在标准容器中
   return `<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="${platformStyles.csdn.container}">
 ${html}
 </section>`
@@ -146,11 +132,7 @@ ${html}
 
 export function formatForZhihu(htmlContent: string): string {
   let html = htmlContent
-
-  // 应用样式
   html = applyStylesWithRegex(html, platformStyles.zhihu)
-
-  // 包裹在标准容器中
   return `<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="${platformStyles.zhihu.container}">
 ${html}
 </section>`
