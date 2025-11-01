@@ -1,109 +1,133 @@
 #!/bin/bash
 
-# 文档构建脚本 - 自动过滤未采集的文档
-# 用法: ./build.sh
+###############################################################################
+# VitePress 文档编译脚本
+# 功能：编译 Markdown 文档成静态网站
+#
+# 使用方法：
+#   ./build.sh              # 编译文档
+#   ./build.sh --stats      # 编译并显示统计信息
+#
+###############################################################################
 
-set -e  # 遇到错误立即退出
+set -e
 
 # 颜色定义
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
 RED='\033[0;31m'
+GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'
 
-# 打印带颜色的消息
-print_info() {
-    echo -e "${BLUE}[信息]${NC} $1"
+# 打印函数
+print_header() {
+    echo -e "${CYAN}"
+    echo "╔════════════════════════════════════════════════════════════════╗"
+    echo "║                    📦 VitePress 编译脚本"
+    echo "╚════════════════════════════════════════════════════════════════╝"
+    echo -e "${NC}"
 }
 
 print_success() {
-    echo -e "${GREEN}[成功]${NC} $1"
+    echo -e "${GREEN}✓ $1${NC}"
+}
+
+print_info() {
+    echo -e "${CYAN}ℹ $1${NC}"
 }
 
 print_error() {
-    echo -e "${RED}[错误]${NC} $1"
+    echo -e "${RED}✗ $1${NC}"
 }
 
-print_warning() {
-    echo -e "${YELLOW}[警告]${NC} $1"
-}
+# 主程序
+main() {
+    print_header
 
-# 打印标题
-echo ""
-echo "======================================"
-echo "   📦 文档构建脚本"
-echo "======================================"
-echo ""
-
-# 检查 Python3 是否安装
-if ! command -v python3 &> /dev/null; then
-    print_error "Python3 未安装，请先安装 Python3"
-    exit 1
-fi
-
-# 检查 Node.js 是否安装
-if ! command -v node &> /dev/null; then
-    print_error "Node.js 未安装，请先安装 Node.js"
-    exit 1
-fi
-
-# 检查过滤脚本是否存在
-if [ ! -f "scripts/filter-collected-docs.py" ]; then
-    print_error "找不到过滤脚本: scripts/filter-collected-docs.py"
-    exit 1
-fi
-
-# 检查 TODO 配置文件是否存在
-if [ ! -f "TODO_CAIJI.md" ]; then
-    print_error "找不到 TODO_CAIJI.md 配置文件"
-    exit 1
-fi
-
-# 第一步：过滤未采集的文档
-print_info "步骤 1/2: 正在过滤未采集的文档..."
-echo "--------------------------------------"
-
-if python3 scripts/filter-collected-docs.py; then
-    print_success "文档过滤完成"
-else
-    print_error "文档过滤失败"
-    exit 1
-fi
-
-echo ""
-echo "--------------------------------------"
-
-# 第二步：构建文档
-print_info "步骤 2/2: 正在构建文档..."
-echo "--------------------------------------"
-
-if npm run build:force; then
-    echo ""
-    echo "--------------------------------------"
-    print_success "文档构建完成！"
-
-    # 显示构建输出目录
-    if [ -d "docs/.vitepress/dist" ]; then
-        echo ""
-        print_info "构建输出目录: docs/.vitepress/dist"
-
-        # 统计文件数量
-        HTML_COUNT=$(find docs/.vitepress/dist -name "*.html" | wc -l)
-        print_info "生成的 HTML 文件数: ${HTML_COUNT}"
+    # 检查环境
+    if ! command -v node &> /dev/null; then
+        print_error "Node.js 未安装"
+        exit 1
     fi
+    print_success "Node.js $(node --version)"
 
+    if ! command -v npm &> /dev/null; then
+        print_error "npm 未安装"
+        exit 1
+    fi
+    print_success "npm $(npm --version)"
     echo ""
-    print_info "预览构建结果:"
-    echo "  npm run preview"
-else
-    echo ""
-    print_error "文档构建失败！"
-    exit 1
-fi
 
-echo ""
-echo "======================================"
-print_success "✅ 构建流程已完成"
-echo "======================================"
-echo ""
+    # 编译文档
+    print_info "开始编译文档..."
+    echo ""
+
+    if npm run build:force; then
+        echo ""
+        print_success "编译完成！"
+        echo ""
+
+        # 显示统计信息（如果指定 --stats）
+        if [ "${1:-}" = "--stats" ]; then
+            echo -e "${YELLOW}📊 编译统计：${NC}"
+
+            DIST_DIR="docs/.vitepress/dist"
+            if [ -d "$DIST_DIR" ]; then
+                HTML_COUNT=$(find "$DIST_DIR" -name "*.html" 2>/dev/null | wc -l)
+                JS_COUNT=$(find "$DIST_DIR" -name "*.js" 2>/dev/null | wc -l)
+                CSS_COUNT=$(find "$DIST_DIR" -name "*.css" 2>/dev/null | wc -l)
+                IMG_COUNT=$(find "$DIST_DIR" \( -name "*.png" -o -name "*.jpg" -o -name "*.gif" -o -name "*.svg" \) 2>/dev/null | wc -l)
+                TOTAL_SIZE=$(du -sh "$DIST_DIR" 2>/dev/null | cut -f1)
+                TOTAL_FILES=$(find "$DIST_DIR" -type f 2>/dev/null | wc -l)
+
+                echo "  HTML 文件:   $HTML_COUNT"
+                echo "  JavaScript:  $JS_COUNT"
+                echo "  CSS 文件:    $CSS_COUNT"
+                echo "  图片文件:    $IMG_COUNT"
+                echo "  总文件数:    $TOTAL_FILES"
+                echo ""
+                echo -e "${YELLOW}📈 大小统计：${NC}"
+                echo "  总大小:      $TOTAL_SIZE"
+                echo ""
+            fi
+        fi
+
+        echo -e "${YELLOW}📁 输出目录：${NC}"
+        echo "  docs/.vitepress/dist/"
+        echo ""
+        echo -e "${YELLOW}📝 后续步骤：${NC}"
+        echo "  预览: npm run preview"
+        echo "  部署: ./deploy.sh all"
+        echo ""
+    else
+        print_error "编译失败！"
+        exit 1
+    fi
+}
+
+# 显示帮助
+show_help() {
+    echo -e "${CYAN}VitePress 文档编译脚本${NC}"
+    echo ""
+    echo "使用方法："
+    echo "  ./build.sh              编译文档"
+    echo "  ./build.sh --stats      编译并显示统计信息"
+    echo "  ./build.sh --help       显示此帮助信息"
+    echo ""
+}
+
+# 处理参数
+case "${1:-build}" in
+    --help|-h)
+        show_help
+        ;;
+    build|--stats)
+        main "$@"
+        ;;
+    *)
+        print_error "未知选项: $1"
+        show_help
+        exit 1
+        ;;
+esac

@@ -488,3 +488,17 @@ rm -rf dist vitepress-dist_*.tar.gz
 ---
 
 *最后更新：2025年11月1日*
+bash write.sh article-name  (或 generate.sh)
+      ↓
+  docs/01_初步了解/article.md
+      ↓
+  ./build.sh (编译)
+      ↓
+  docs/.vitepress/dist/ (静态网站)
+      ↓
+  ./deploy.sh deploy (上传服务器)
+
+  总结：
+  - generate.sh = 内容生成工具（AI辅助）
+  - write.sh = 简化版处理（快速输出）
+  - build.sh = 编译工具（VitePress编译）
