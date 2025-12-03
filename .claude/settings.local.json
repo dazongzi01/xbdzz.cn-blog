@@ -62,7 +62,18 @@
       "Bash(__NEW_LINE__ echo \"✅ 已全部改为 ''大粽子全局的''！\")",
       "Bash(__NEW_LINE__ echo \"✅ 已修正为纯粹的 ''''大粽子''''！\" echo \"\" echo \"🔍 验证所有配置：\" echo \"\" echo \"config.ts:\" grep -n \"title\\|description\\|message\" docs/.vitepress/config.ts)",
       "Bash(git remote add:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(pandoc:*)",
+      "Bash(lynx:*)",
+      "Bash(DOWNLOAD_IMAGES=true bash:*)",
+      "Bash(if [ -d \"docs/03_使用手册/images\" ])",
+      "Bash(then echo \"图片目录存在\")",
+      "Bash(else echo \"图片目录不存在\")",
+      "Bash(fi)",
+      "Bash(ls:*)",
+      "Bash(if [ -d \"/Users/dazongzi/Downloads/MyDoc/平台端圈层角色_files\" ])",
+      "Bash(then echo \"找到图片目录：\")",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []
