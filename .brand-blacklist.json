@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "description": "品牌名称黑名单 - 严格禁止在文档中使用的品牌名称",
+  "lastUpdated": "2025-12-04",
+  "blacklist": [
+    {
+      "name": "CRMEB",
+      "variants": [
+        "CRMEB",
+        "crmeb",
+        "Crmeb",
+        "CrmebAdminApplication",
+        "CrmebApplication",
+        "crmeb-admin",
+        "crmeb-front",
+        "crmeb_db",
+        "crmeb.sql"
+      ],
+      "reason": "品牌名称限制",
+      "replacements": {
+        "CRMEB": "系统",
+        "crmeb": "system",
+        "CRMEB系统": "商城系统",
+        "CRMEB后台": "管理后台",
+        "CRMEB商城": "商城平台",
+        "crmeb-admin": "admin",
+        "crmeb-front": "front",
+        "crmeb_db": "shop_db",
+        "crmeb.sql": "database.sql",
+        "CrmebAdminApplication": "AdminApplication"
+      },
+      "scope": "all",
+      "status": "严格禁止"
+    }
+  ],
+  "rules": {
+    "检查范围": [
+      "所有 Markdown 文档",
+      "所有配置文件",
+      "所有代码注释",
+      "所有示例代码",
+      "所有图片和截图",
+      "所有文件名和路径"
+    ],
+    "执行方式": "自动检查并替换",
+    "优先级": "最高"
+  },
+  "enforcement": {
+    "历史文档": "需要批量清理",
+    "新文档": "创建时自动检查",
+    "AI助手": "严格遵守，不得使用黑名单品牌名称"
+  }
+}

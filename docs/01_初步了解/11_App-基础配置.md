@@ -8,7 +8,7 @@
 
 ## 🎯 理解App应用是什么
 
-在CRMEB系统中，App指的是原生应用：
+在本系统系统中，App指的是原生应用：
 
 | 应用类型 | 技术 | 特点 |
 |---------|------|------|
@@ -83,7 +83,7 @@ App项目通常在项目根目录的 `uniapp/` 或 `mobile/` 目录下：
 │   ├── pages/
 │   ├── App.vue
 │   └── package.json
-└── crmeb-admin/     # Java后端
+└── system-admin/     # Java后端
 ```
 
 ### 打开项目
@@ -279,7 +279,7 @@ mobile/
 
 比如：
 - `com.mycompany.myshop`
-- `com.crmeb.shop`
+- `com.shop.shop`
 - `cn.xxx.mall`
 
 ⚠️ **一旦设定就很难改，确保拼写正确！**

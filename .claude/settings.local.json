@@ -73,7 +73,16 @@
       "Bash(ls:*)",
       "Bash(if [ -d \"/Users/dazongzi/Downloads/MyDoc/平台端圈层角色_files\" ])",
       "Bash(then echo \"找到图片目录：\")",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(test:*)",
+      "Bash(for img in cdd3d4f9b1160209d1fad8dad081f10b 3b3a50e6dd7d65871d6309dbe03bee5e c0eee391ecbb98aea42b560392fea50a e780740027642f970ce1e5761ffb21ee 88920a575a0c921590be32d7a7c50671 df8104bf9ae0a3ff658a1cf47ae5659a 0087359955c6ab524c3ac9a78e19e557 47824e8f1ea889516e040ec2dfc21ddd)",
+      "Bash(do)",
+      "Bash(open:*)",
+      "Bash(/tmp/build_doc.sh:*)",
+      "Bash(xargs:*)",
+      "Bash(for img in 0904694804d590921940ac1e332761ae.png 1f40d3f57033dad328721a300cc9b0dd.png 2f13d18f64c7233524ecd20062d17fca.png 5102d4d7f79e330ed8a263bf54457897.png 6cbbbba3076821c5293d45eda381531f.png b91577dce3e7f2a9217d6a67a194254b.png c8ebf47cc9658885b83c36ecbb1ab722.png d36c6cad1cb72d7d7da7aaa92e0781c7.png d43528e08f67a3cc974a8832414cd271.png fc3de97ff90414bcd9bb09cc6b081f43.png)",
+      "Bash(do cp \"$img\" /Users/dazongzi/ZBKJ/CODEMANGER/My_Doc/docs/03_使用手册/images/)",
+      "Bash(for img in 0d623a1a00449a4fc65e253225856f37.png 2d78efd5bd1bd2d4758dd814d5d2ebc2.png)"
     ],
     "deny": [],
     "ask": []

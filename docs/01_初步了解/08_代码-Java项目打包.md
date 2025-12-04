@@ -33,11 +33,11 @@ JAR（Java Archive）文件就是一个"打包好的 Java 应用"。
 ```yaml
 spring:
   application:
-    name: crmeb-admin
+    name: system-admin
 
   datasource:
-    url: jdbc:mysql://localhost:3306/crmeb_db?useSSL=false&serverTimezone=Asia/Shanghai
-    username: crmeb
+    url: jdbc:mysql://localhost:3306/shop_db?useSSL=false&serverTimezone=Asia/Shanghai
+    username: dbuser
     password: 你的数据库密码
     driver-class-name: com.mysql.cj.jdbc.Driver
 
@@ -119,14 +119,14 @@ mvn clean package
 
 ✅ 看到 `BUILD SUCCESS` 说明成功了！
 
-JAR 文件会出现在 `target/` 目录，通常叫 `crmeb-admin-xxx.jar`
+JAR 文件会出现在 `target/` 目录，通常叫 `system-admin-xxx.jar`
 
 ### 本地测试运行（可选）
 
 在本地试试能否运行：
 
 ```bash
-java -jar target/crmeb-admin-xxx.jar
+java -jar target/system-admin-xxx.jar
 ```
 
 如果看到项目启动日志，说明 JAR 包没有问题。
@@ -143,7 +143,7 @@ java -jar target/crmeb-admin-xxx.jar
 
 1. 登录宝塔
 2. 左边菜单 → "文件"
-3. 进入你的项目目录，比如 `/www/wwwroot/crmeb/`
+3. 进入你的项目目录，比如 `/www/wwwroot/shop/`
 4. 点"上传"
 5. 选择你的 JAR 文件
 6. 等待上传完成
@@ -155,7 +155,7 @@ java -jar target/crmeb-admin-xxx.jar
 1. 打开 SFTP 工具
 2. 输入服务器 IP、用户名、密码
 3. 连接到服务器
-4. 导航到 `/www/wwwroot/crmeb/` 目录
+4. 导航到 `/www/wwwroot/shop/` 目录
 5. 从本地拖拽 JAR 文件到服务器目录
 6. 等待上传完成
 
@@ -164,7 +164,7 @@ java -jar target/crmeb-admin-xxx.jar
 如果项目在 Git 仓库：
 
 ```bash
-cd /www/wwwroot/crmeb/
+cd /www/wwwroot/shop/
 git clone 你的仓库地址 .
 mvn clean package
 ```
@@ -182,21 +182,21 @@ mvn clean package
 ### 简单启动（测试用）
 
 ```bash
-cd /www/wwwroot/crmeb/
-java -jar crmeb-admin-xxx.jar
+cd /www/wwwroot/shop/
+java -jar system-admin-xxx.jar
 ```
 
 你会看到项目启动日志显示（Spring Boot 标志和启动信息）。
 
 **启动过程中会显示：**
 1. Spring Boot 项目启动的 ASCII 艺术
-2. 日志行：`Starting CrmebAdminApplication on server`
+2. 日志行：`Starting AdminApplication on server`
 3. 数据库连接日志
-4. 最终显示：`Started CrmebAdminApplication`
+4. 最终显示：`Started AdminApplication`
 
 ⏳ **等待项目完全启动**（通常 10-30 秒）
 
-✅ 看到 `Started CrmebAdminApplication` 说明启动成功了！此时项目已经就绪。
+✅ 看到 `Started AdminApplication` 说明启动成功了！此时项目已经就绪。
 
 ⚠️ **注意：** 这样启动的问题是，关闭终端连接后项目会停止。
 
@@ -205,7 +205,7 @@ java -jar crmeb-admin-xxx.jar
 使用 `nohup` 让项目在后台运行：
 
 ```bash
-nohup java -jar crmeb-admin-xxx.jar > app.log 2>&1 &
+nohup java -jar system-admin-xxx.jar > app.log 2>&1 &
 ```
 
 解释：
@@ -219,7 +219,7 @@ nohup java -jar crmeb-admin-xxx.jar > app.log 2>&1 &
 ### 查看启动日志
 
 ```bash
-tail -f /www/wwwroot/crmeb/app.log
+tail -f /www/wwwroot/shop/app.log
 ```
 
 查看项目是否成功启动。按 `Ctrl+C` 退出查看。
@@ -260,7 +260,7 @@ http://你的服务器IP:8000/
 4. 填写启动命令：
 
 ```bash
-cd /www/wwwroot/crmeb/ && nohup java -jar crmeb-admin-xxx.jar > app.log 2>&1 &
+cd /www/wwwroot/shop/ && nohup java -jar system-admin-xxx.jar > app.log 2>&1 &
 ```
 
 5. 选择"重启后执行"
@@ -273,21 +273,21 @@ cd /www/wwwroot/crmeb/ && nohup java -jar crmeb-admin-xxx.jar > app.log 2>&1 &
 创建一个 Systemd 服务文件：
 
 ```bash
-sudo nano /etc/systemd/system/crmeb.service
+sudo nano /etc/systemd/system/shop.service
 ```
 
 填写内容：
 
 ```ini
 [Unit]
-Description=CRMEB Admin Service
+Description=本系统 Admin Service
 After=network.target
 
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/www/wwwroot/crmeb/
-ExecStart=/usr/bin/java -jar /www/wwwroot/crmeb/crmeb-admin-xxx.jar
+WorkingDirectory=/www/wwwroot/shop/
+ExecStart=/usr/bin/java -jar /www/wwwroot/shop/system-admin-xxx.jar
 Restart=always
 RestartSec=10
 
@@ -299,14 +299,14 @@ WantedBy=multi-user.target
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable crmeb
-sudo systemctl start crmeb
+sudo systemctl enable shop
+sudo systemctl start shop
 ```
 
 验证是否启动：
 
 ```bash
-sudo systemctl status crmeb
+sudo systemctl status shop
 ```
 
 ---
@@ -381,15 +381,15 @@ sudo systemctl status crmeb
    - 更新 application.yml 里的密码
 
 2. **用户不存在**
-   - 在宝塔创建 MySQL 用户 `crmeb`
+   - 在宝塔创建 MySQL 用户 `dbuser`
    - 赋予数据库权限
 
 3. **数据库不存在**
-   - 在宝塔创建数据库 `crmeb_db`
+   - 在宝塔创建数据库 `shop_db`
    - 导入初始化脚本
 
 ```bash
-mysql -u crmeb -p crmeb_db < init.sql
+mysql -u dbuser -p shop_db < init.sql
 ```
 
 ### Q: 项目启动了但访问不了？
