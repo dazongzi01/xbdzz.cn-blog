@@ -116,7 +116,8 @@
       "Bash(pwd ls -la)",
       "Bash(__NEW_LINE__ for doc in 19_拼团活动说明 20_拼团活动管理 21_拼团记录)",
       "Bash(__NEW_LINE__ for doc in 22_签到活动说明 23_签到配置 24_签到记录)",
-      "Bash(for img in \"dark_logo.png\" \"isSupport.png\" \"icon_sort.png\" \"icon_eyes.png\" \"no_portrait.png\" \"icon_picture.png\")"
+      "Bash(for img in \"dark_logo.png\" \"isSupport.png\" \"icon_sort.png\" \"icon_eyes.png\" \"no_portrait.png\" \"icon_picture.png\")",
+      "Bash(npx vitepress:*)"
     ],
     "deny": [],
     "ask": []
