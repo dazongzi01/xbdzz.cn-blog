@@ -5,10 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "python3 scripts/filter-collected-docs.py && vitepress build docs",
-    "build:force": "vitepress build docs",
-    "preview": "vitepress preview docs",
-    "filter": "python3 scripts/filter-collected-docs.py"
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
   },
   "devDependencies": {
     "vitepress": "^1.0.0-alpha.28"
