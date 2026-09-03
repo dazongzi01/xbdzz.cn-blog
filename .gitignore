@@ -50,3 +50,6 @@ Thumbs.db
 *.tmp
 *.temp
 *~
+
+# 博客侧边栏由发布脚本生成
+docs/.vitepress/blog-sidebar.json
