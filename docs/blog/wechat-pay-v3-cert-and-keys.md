@@ -80,7 +80,8 @@ tags:
 从证书里读：
 
 ```bash
-openssl x509 -in apiclient_cert.pem -noout -serial
+openssl x509 -noout -serial \
+        -in apiclient_cert.pem
 ```
 
 输出形如 `serial=1A2B3C...`，去掉 `serial=` 前缀，**转成大写**填进配置。
@@ -121,15 +122,17 @@ wxpay:
   # 小程序或公众号的 AppID —— 注意不是商户号
   app-id: wx**********
   mch-id: 16**********
-  # APIv3 密钥，32 位。不是 v2 的那个 API 密钥
-  api-v3-key: ********************************
-  # 商户证书序列号，大写，从 apiclient_cert.pem 读出来
+  # APIv3 密钥，32 位
+  # 不是 v2 的那个 API 密钥
+  api-v3-key: ****************************
+  # 商户证书序列号，大写
+  # 从 apiclient_cert.pem 里读出来
   cert-serial-no: 1A2B3C**********
-  # 相对路径，别写绝对路径，换环境会找不到
-  private-cert-path: cert/apiclient_cert.pem
-  private-key-path: cert/apiclient_key.pem
+  # 相对路径，别写绝对路径
+  private-cert-path: wx/apiclient_cert.pem
+  private-key-path: wx/apiclient_key.pem
   # 微信支付公钥模式（新商户号）
-  public-key-path: cert/pub_key.pem
+  public-key-path: wx/pub_key.pem
   public-key-id: PUB_KEY_ID_**********
 ```
 

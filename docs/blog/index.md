@@ -7,5 +7,7 @@ description: "电商全链路实战笔记"
 
 从下单到收钱到上架，把每一段真实讲透。
 
+- 2026-09-11 · [演示环境的敏感配置，让系统自己打码](/blog/demo-config-auto-masking)
+- 2026-09-07 · [微信小程序支付，从关联商户号到收到第一笔钱](/blog/wechat-miniprogram-pay-setup)
 - 2026-09-04 · [元转分，少写一个参数就少一分钱](/blog/yuan-to-cent-rounding)
 - 2026-09-03 · [微信支付 v3 的证书和密钥，四类东西别再配混了](/blog/wechat-pay-v3-cert-and-keys)
