@@ -41,15 +41,19 @@ int fen = (int)(yuan * 100);
 **二、`setScale` 的舍入模式必须写出来。**
 
 ```java
-public static int yuanToFen(BigDecimal y) {
-    return y.multiply(HUNDRED)
+static int toFen(BigDecimal yuan) {
+    return yuan.multiply(HUNDRED)
             // 这个参数不能省
             .setScale(0, HALF_UP)
             .intValue();
 }
 ```
 
-不写舍入模式，遇到除不尽会直接抛 `ArithmeticException`。而且默认行为不是你想的那样——**明确写 `HALF_UP`，别赌**。
+不写舍入模式，需要舍入的时候直接抛
+`ArithmeticException: Rounding necessary`。
+
+注意它不是「有个默认舍入方式」——`setScale(int)` 等价于「不许舍入」，
+只会抛，不会替你四舍五入。**明确写 `HALF_UP`。**
 
 **三、分转元回来时，0 也要 `setScale(2)`。**
 
