@@ -7,6 +7,9 @@ description: "电商全链路实战笔记"
 
 从下单到收钱到上架，把每一段真实讲透。
 
+- 2026-09-24 · [Redis 里刚 Pop，进程挂了钱已经收了](/blog/redis-list-as-queue-message-loss)
+- 2026-09-22 · [用户退了一件，这件该退多少没数](/blog/coupon-stacking-allocation)
+- 2026-09-20 · [产品说「钱自动分给商家」，听起来像加一个接口](/blog/profit-sharing-and-isv-mode)
 - 2026-09-18 · [一个拼错的方法名，和没人敢改的原因](/blog/misspelled-method-name)
 - 2026-09-16 · [退款不是把钱退回去就完了，说说完整的资金链路](/blog/refund-reconciliation-flow)
 - 2026-09-14 · [订单状态机是怎么烂掉的，以及怎么不烂](/blog/order-state-machine-design)
