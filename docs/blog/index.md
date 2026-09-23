@@ -8,6 +8,9 @@ description: "电商全链路实战笔记"
 从下单到收钱到上架，把每一段真实讲透。
 
 - 2026-09-24 · [Redis 里刚 Pop，进程挂了钱已经收了](/blog/redis-list-as-queue-message-loss)
+- 2026-09-24 · [有人提议分库分表，分片键选错了改不回来](/blog/order-table-sharding-key)
+- 2026-09-23 · [商品剩 1 件，两个人都下成功了](/blog/inventory-deduction-timing)
+- 2026-09-23 · [老单还在走 v2，新单已经切到 v3](/blog/wechat-pay-v2-v3-coexist)
 - 2026-09-22 · [用户退了一件，这件该退多少没数](/blog/coupon-stacking-allocation)
 - 2026-09-20 · [产品说「钱自动分给商家」，听起来像加一个接口](/blog/profit-sharing-and-isv-mode)
 - 2026-09-18 · [一个拼错的方法名，和没人敢改的原因](/blog/misspelled-method-name)
